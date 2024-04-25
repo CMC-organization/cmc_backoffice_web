@@ -10,8 +10,8 @@ import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
 import InputPassword from '../../../../components/InputPassword';
 
-import ChecboxNotChecked from '../../../../images/svg/ChecboxNotChecked';
 import ChecboxChecked from '../../../../images/svg/ChecboxChecked';
+import ChecboxNotChecked from '../../../../images/svg/ChecboxNotChecked';
 import ImageLogin from '../../../../images/svg/ImageLogin';
 import Logo from '../../../../images/svg/Logo';
 
