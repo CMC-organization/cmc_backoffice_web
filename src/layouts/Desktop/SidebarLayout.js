@@ -1,0 +1,15 @@
+import React from 'react';
+import Sidebar from '../../components/Sidebar';
+
+const SidebarLayout = ({ content }) => {
+ return (
+  <div className='flex w-1/1 h-screen lg:mx-12 xl:mx-16 max-w-screen-2xl mx-auto'>
+   <div className='flex flex-col w-2/12 h-screen px-3'>
+    <Sidebar />
+   </div>
+   <div className='flex flex-col w-full justify-center h-screen px-4 ml-12'>{content}</div>
+  </div>
+ );
+};
+
+export default SidebarLayout;

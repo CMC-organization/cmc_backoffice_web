@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 
 import reportWebVitals from './reportWebVitals';
 import AppStack from './routes/AppStack';
-import GlobalProvider from './context/GlobalContext';
+import { GlobalProvider } from './context/GlobalContext';
 
 import './index.css';
 

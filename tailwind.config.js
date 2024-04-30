@@ -20,6 +20,7 @@ module.exports = {
     secondar: '#303343',
     tertiar: '#171923',
     font: '#575757',
+    font2: '#787486',
     transparent: 'transparent',
 
     offWhite: '#F5F5F5',
