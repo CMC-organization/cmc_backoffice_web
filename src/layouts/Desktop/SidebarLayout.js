@@ -7,7 +7,7 @@ const SidebarLayout = ({ content }) => {
    <div className='flex flex-col w-2/12 h-screen px-3'>
     <Sidebar />
    </div>
-   <div className='flex flex-col w-full justify-center h-screen px-4 ml-12'>{content}</div>
+   <div className='flex flex-col w-full h-screen px-4 py-12 ml-12'>{content}</div>
   </div>
  );
 };
