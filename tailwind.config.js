@@ -22,6 +22,7 @@ module.exports = {
     font: '#575757',
     font2: '#787486',
     transparent: 'transparent',
+    modal: '#E5E5E570',
 
     offWhite: '#F5F5F5',
 

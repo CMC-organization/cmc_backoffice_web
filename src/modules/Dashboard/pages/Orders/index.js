@@ -16,12 +16,10 @@ const Orders = () => {
        <Button name='Exportar dados' width='w-[190px]' height={'h-12'} textColor={'text-white'} backgroundColor='bg-primar' type='submit' />
       </div>
      </div>
-     <div className='min-w-full max-w-full min-h-full max-h-full'>
-      <div className='overflow-x-auto flex flex-col gap-4'>
-       <OrdersCard />
-       <OrdersCard />
-       <OrdersCard />
-      </div>
+     <div className='min-w-full max-w-full max-h-[480px] overflow-x-auto overflow-y-auto flex flex-col gap-4 pr-4 pb-4'>
+      <OrdersCard />
+      <OrdersCard />
+      <OrdersCard />
      </div>
     </div>
    }

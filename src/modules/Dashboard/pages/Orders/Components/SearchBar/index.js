@@ -1,5 +1,5 @@
 import SearchIcon from '.././../../../../../images/svg/SearchIcon';
-import Filter from '.././../../../../../images/svg/Filter';
+import FilterModal from '../FilterModal';
 
 const SearchBar = () => {
  return (
@@ -8,9 +8,7 @@ const SearchBar = () => {
     <SearchIcon />
     <input placeholder='Pesquisar' className='text-gray-900 text-sm w-full outline-none' />
    </div>
-   <div className='border border-gray-200 rounded-md p-2.5 cursor-pointer'>
-    <Filter />
-   </div>
+   <FilterModal />
   </div>
  );
 };

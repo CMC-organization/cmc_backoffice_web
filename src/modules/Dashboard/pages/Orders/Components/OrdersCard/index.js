@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import ArrowUp from '../../../../../../images/svg/ArrowUp';
+import ArrowDown from '../../../../../../images/svg/ArrowDown';
 import Invoice from '../../../../../../images/svg/Invoice';
 import Cipher from '../../../../../../images/svg/Cipher';
 import Upload from '../../../../../../images/svg/Upload';
@@ -15,14 +16,25 @@ const OrdersCard = () => {
  return (
   <div className='w-max border border-gray-200 rounded-md p-4 flex flex-col'>
    <div className='flex items-center gap-4'>
-    <div
-     className='cursor-pointer'
-     onClick={() => {
-      setOpen(!open);
-     }}
-    >
-     <ArrowUp />
-    </div>
+    {open ? (
+     <div
+      className='cursor-pointer'
+      onClick={() => {
+       setOpen(!open);
+      }}
+     >
+      <ArrowUp />
+     </div>
+    ) : (
+     <div
+      className='cursor-pointer'
+      onClick={() => {
+       setOpen(!open);
+      }}
+     >
+      <ArrowDown />
+     </div>
+    )}
     <div className='flex flex-col items-center gap-1'>
      <p className='text-sm font-medium text-black'>#1015</p>
      <p className='text-xs font-medium text-font'>Pedido</p>
