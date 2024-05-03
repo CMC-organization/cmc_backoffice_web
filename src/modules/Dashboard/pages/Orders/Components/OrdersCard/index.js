@@ -3,15 +3,17 @@ import { useState } from 'react';
 import ArrowUp from '../../../../../../images/svg/ArrowUp';
 import Invoice from '../../../../../../images/svg/Invoice';
 import Cipher from '../../../../../../images/svg/Cipher';
+import Upload from '../../../../../../images/svg/Upload';
 
 import ItemCard from '../ItemCard';
 import CheckInfromation from '../CheckInfromation';
+import UploadCard from '../UploadCard';
 
 const OrdersCard = () => {
  const [open, setOpen] = useState(false);
 
  return (
-  <div className=' w-max border border-gray-200 rounded-md p-2.5 flex flex-col'>
+  <div className='w-max border border-gray-200 rounded-md p-4 flex flex-col'>
    <div className='flex items-center gap-4'>
     <div
      className='cursor-pointer'
@@ -75,22 +77,38 @@ const OrdersCard = () => {
     </div>
    </div>
    {open && (
-    <div className='flex flex-col gap-4 mt-4'>
-     <div className='flex flex-col gap-3'>
-      <p className='text-base font-medium text-black'>Detalhes do pedido</p>
-      <div className='flex'>
-       <ItemCard />
-       <div className='w-[0.5px] h-100 bg-border mr-10 ml-10' />
-       <ItemCard />
-       <div className='w-[0.5px] h-100 bg-border mr-10 ml-10' />
-       <ItemCard />
+    <>
+     <div className='w-full h-[0.5px] bg-border mt-6 mb-6' />
+     <div className='flex flex-col'>
+      <div className='flex flex-col gap-3'>
+       <p className='text-base font-medium text-black'>Detalhes do pedido</p>
+       <div className='flex'>
+        <ItemCard />
+        <div className='w-[0.5px] h-100 bg-border mr-10 ml-10' />
+        <ItemCard />
+        <div className='w-[0.5px] h-100 bg-border mr-10 ml-10' />
+        <ItemCard />
+       </div>
+      </div>
+      <div className='w-full h-[0.5px] bg-border mt-6 mb-6' />
+      <div className='flex flex-col gap-3'>
+       <p className='text-base font-medium text-black'>Informações sobre o cheque</p>
+       <div className='flex items-center'>
+        <CheckInfromation />
+        <div className='w-[0.5px] h-20 bg-border mr-5 ml-5' />
+        <CheckInfromation />
+       </div>
+      </div>
+      <div className='w-full h-[0.5px] bg-border mt-6 mb-6' />
+      <div className='flex flex-col gap-3'>
+       <div className='flex items-center gap-2'>
+        <p className='text-base font-medium text-black'>Anexos</p>
+        <Upload />
+       </div>
+       <UploadCard />
       </div>
      </div>
-     <div className='flex flex-col gap-3'>
-      <p className='text-base font-medium text-black'>Informações sobre o cheque</p>
-      <CheckInfromation />
-     </div>
-    </div>
+    </>
    )}
   </div>
  );
