@@ -81,3 +81,30 @@ input:-webkit-autofill:active {
 #scrollableDiv::-webkit-scrollbar {
   height: 5px;
 }
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 10px;
+  background: #D8D8D8;
+  border-radius: 50px;
+  
+  }
+  
+  .scrollLowerUp::-webkit-scrollbar {
+  height: 7px;
+  cursor: pointer;
+  }
+
+  
+/* Track */
+::-webkit-scrollbar-track {
+  background: #D8D8D8;
+  border-radius: 10px;
+  height: 35px;
+  }
+  
+  /* Handle´´ */
+  ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.33);
+  border-radius: 10px;
+  }
