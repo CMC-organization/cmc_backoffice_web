@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import Filter from '.././../../../../../images/svg/Filter';
+import Filter from '../../../../../../images/svg/Filter';
 
 import { useOrders } from '../../../../../../context/OrdersContext';
 import Input from '../../../../../../components/Input';
@@ -20,7 +20,7 @@ const FilterModal = () => {
  return (
   <div className='flex flex-col gap-3'>
    <div
-    className='border border-gray-200 rounded-md p-2.5 cursor-pointer z-20'
+    className='border border-gray-200 rounded-md p-2.5 cursor-pointer z-50'
     onClick={() => {
      setOpenFilter(!openFilter);
     }}
@@ -35,7 +35,7 @@ const FilterModal = () => {
        setOpenFilter(false);
       }}
      />
-     <div className='w-96 min-h-80 bg-offWhite rounded absolute top-44 z-20 px-6 py-6  drop-shadow-md shadow-slate-700'>
+     <div className='w-96 min-h-80 bg-offWhite rounded absolute top-44 z-50 px-6 py-6'>
       <div className='flex items-center justify-between'>
        <p className='text-lg text-black font-medium'>Filtros</p>
        <Button

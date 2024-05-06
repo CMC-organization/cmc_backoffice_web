@@ -6,9 +6,12 @@ import Header from '../../../../components/Header';
 import SidebarLayout from '../../../../layouts/Desktop/SidebarLayout';
 import OrdersCard from './Components/OrdersCard';
 import SearchBar from './Components/SearchBar';
+import ExportDataModal from './Components/ExportDataModal';
+import { useOrders } from '../../../../context/OrdersContext';
 
 const Orders = () => {
  const [listItens, setListItens] = useState([]);
+ const { openExport, setOpenExport } = useOrders();
 
  let div = document.getElementById('test');
 
@@ -46,12 +49,22 @@ const Orders = () => {
  return (
   <SidebarLayout
    content={
-    <div className='w-full flex flex-col gap-9 '>
+    <div className='w-full flex flex-col gap-9'>
      <div className='flex flex-col gap-9'>
       <Header page='Pedidos' name='Teste' />
       <div className='w-full flex justify-between'>
        <SearchBar />
-       <Button name='Exportar dados' width='w-[190px]' height={'h-12'} textColor={'text-white'} backgroundColor='bg-primar' type='submit' />
+       <Button
+        name='Exportar dados'
+        width='w-[190px]'
+        height={'h-12'}
+        textColor={'text-white'}
+        backgroundColor='bg-primar'
+        type='submit'
+        onClick={() => {
+         setOpenExport(true);
+        }}
+       />
       </div>
      </div>
      <div className='min-w-full max-w-full max-h-[480px] overflow-x-hidden overflow-y-auto flex flex-col gap-4 pr-4 pb-16'>
@@ -60,6 +73,7 @@ const Orders = () => {
       <OrdersCard setListItens={setListItens} />
       <FloatingScroll width={'2300px'} />
      </div>
+     {openExport && <ExportDataModal />}
     </div>
    }
   />

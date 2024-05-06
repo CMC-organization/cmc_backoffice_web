@@ -3,12 +3,15 @@ export const OrdersContext = createContext({});
 
 export const OrdersProvider = ({ children }) => {
  const [openFilter, setOpenFilter] = useState(false);
+ const [openExport, setOpenExport] = useState(false);
 
  return (
   <OrdersContext.Provider
    value={{
     openFilter,
     setOpenFilter,
+    openExport,
+    setOpenExport,
    }}
   >
    {children}
