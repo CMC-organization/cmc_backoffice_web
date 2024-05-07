@@ -1,5 +1,6 @@
-import Logo from '../../images/svg/Logo';
+import { useNavigate } from 'react-router-dom';
 
+import Logo from '../../images/svg/Logo';
 import Cart from '../../images/svg/Cart';
 import Products from '../../images/svg/Products';
 import Clients from '../../images/svg/Clients';
@@ -11,6 +12,7 @@ import { useGlobal } from '../../context/GlobalContext';
 
 const Sidebar = () => {
  const { orders, setOrders, products, setProducts, clients, setClients, purchases, setPurchases, access, setAccess } = useGlobal();
+ const navigate = useNavigate();
 
  return (
   <div className='flex flex-col items-start py-12 w-full'>
@@ -32,6 +34,7 @@ const Sidebar = () => {
        setClients(false);
        setPurchases(false);
        setAccess(false);
+       navigate('/orders');
       }}
      >
       <Cart color='#787486' />
@@ -52,6 +55,7 @@ const Sidebar = () => {
        setClients(false);
        setPurchases(false);
        setAccess(false);
+       navigate('/products');
       }}
      >
       <Products color='#787486' />

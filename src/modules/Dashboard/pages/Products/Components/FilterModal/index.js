@@ -3,8 +3,6 @@ import { useForm } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { Slider } from 'primereact/slider';
-// import 'primereact/resources/themes/nova-accent/theme.css';
-// import 'primereact/resources/themes/viva-light/theme.css';
 
 import Filter from '.././../../../../../images/svg/Filter';
 
@@ -15,23 +13,17 @@ import Button from '../../../../../../components/Button';
 const FilterModal = () => {
  const { openFilter, setOpenFilter } = useOrders();
 
- const postFilter = (data) => {
-  console.log(data);
- };
+ const postFilter = () => {};
 
- const { handleSubmit, register } = useForm();
+ const {
+  handleSubmit,
+  register,
+  formState: { errors },
+ } = useForm();
 
- const clients = [
-  { name: 'Joao', code: 'Joao' },
-  { name: 'Gustavo', code: 'Gustavo' },
- ];
- const status = [
-  { name: 'Joao', code: 'Joao' },
-  { name: 'Gustavo', code: 'Gustavo' },
- ];
+ const clients = [{ name: 'Joao', code: 'Joao' }];
 
  const [selectedClient, setSelectedClient] = useState(null);
- const [selectedStatus, setSelectedStatus] = useState(null);
  const [date, setDate] = useState(null);
  const [value, setValue] = useState([20, 80]);
 
@@ -67,34 +59,33 @@ const FilterModal = () => {
        />
       </div>
       <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
-      <form onSubmit={handleSubmit(postFilter)} className='flex flex-col gap-5'>
-       <Calendar {...register('date')} value={date} onChange={(e) => setDate(e.value)} showIcon locale='pt' dateFormat='dd/mm/yy' className='' />
+      <form onSubmit={handleSubmit(postFilter)} className='flex flex-col'>
+       <Calendar value={date} onChange={(e) => setDate(e.value)} showIcon />
 
        <Dropdown
-        {...register('clients')}
         value={selectedClient}
         onChange={(e) => setSelectedClient(e.value)}
         options={clients}
         optionLabel='name'
         placeholder='Cliente'
-        className='w-full md:w-14rem bg-offWhite'
+        className='w-full md:w-14rem'
        />
        <Dropdown
-        {...register('status')}
-        value={selectedStatus}
-        onChange={(e) => setSelectedStatus(e.value)}
-        options={status}
+        value={selectedClient}
+        onChange={(e) => setSelectedClient(e.value)}
+        options={clients}
         optionLabel='name'
         placeholder='Status'
-        className='w-full md:w-14rem bg-offWhite'
+        className='w-full md:w-14rem'
        />
-       <div className='flex flex-col gap-3'>
+       <div className='card flex justify-content-center'>
         <p>Preço</p>
-        <div className='card flex justify-content-center'>
-         <Slider value={value} onChange={(e) => setValue(e.value)} className='w-14rem bg-gray-300' range />
-        </div>
+        <Slider value={value} onChange={(e) => setValue(e.value)} className='w-14rem' range />
        </div>
-       <Button name='Salvar filtros' width='w-100' height={'h-12'} textColor={'text-white'} backgroundColor='bg-primar' type='submit' />
+
+       <div className='flex justify-between pt-4'>
+        <Button name='Salvar filtros' width='w-100' height={'h-12'} textColor={'text-white'} backgroundColor='bg-primar' type='submit' />
+       </div>
       </form>
      </div>
     </>

@@ -18,16 +18,12 @@ const Orders = () => {
  const syncScroll = () => {
   div = document.getElementById('test');
 
-  // Iterar sobre os elementos do loop e definir o scroll esquerdo igual ao do elemento principal
   if (listItens && listItens.length) {
    listItens.forEach((item) => {
     let divLoop = document.getElementById(item);
-    console.log(divLoop, 8080);
 
     if (divLoop) {
      divLoop.scrollLeft = div.scrollLeft;
-
-     console.log(item);
     }
    });
   }

@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 
 import reportWebVitals from './reportWebVitals';
 import AppStack from './routes/AppStack';
+import { PrimeReactProvider } from 'primereact/api';
 import { GlobalProvider } from './context/GlobalContext';
 
 import './index.css';
@@ -15,8 +16,10 @@ root.render(
  <React.StrictMode>
   <GlobalProvider>
    <OrdersProvider>
-    <ToastContainer />
-    <AppStack />
+    <PrimeReactProvider>
+     <ToastContainer />
+     <AppStack />
+    </PrimeReactProvider>
    </OrdersProvider>
   </GlobalProvider>
  </React.StrictMode>,

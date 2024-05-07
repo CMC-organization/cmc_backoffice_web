@@ -1,4 +1,8 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Dropdown } from 'primereact/dropdown';
+import { Calendar } from 'primereact/calendar';
+import 'primereact/resources/themes/fluent-light/theme.css';
 
 import XClose from '../../../../../../images/svg/XClose';
 
@@ -16,6 +20,11 @@ const ExportDataModal = () => {
   register,
   formState: { errors },
  } = useForm();
+
+ const clients = [{ name: 'Joao', code: 'Joao' }];
+
+ const [selectedClient, setSelectedClient] = useState(null);
+ const [date, setDate] = useState(null);
 
  return (
   <>
@@ -42,58 +51,31 @@ const ExportDataModal = () => {
     </div>
     <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
     <form onSubmit={handleSubmit(postFilter)} className='flex flex-col'>
-     <Input
-      label='Cliente'
-      error={errors.email}
-      placeholder='Selecione'
-      validate={{
-       pattern: {
-        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-        message: 'Data inválida!',
-       },
-      }}
-      registerKey={'date'}
-      register={register}
+     <Dropdown
+      value={selectedClient}
+      onChange={(e) => setSelectedClient(e.value)}
+      options={clients}
+      optionLabel='name'
+      placeholder='Cliente'
+      className='w-full md:w-14rem'
      />
-     <Input
-      label='Setor de exportação'
-      error={errors.email}
-      placeholder='Selecione'
-      validate={{
-       pattern: {
-        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-        message: 'Data inválida!',
-       },
-      }}
-      registerKey={'date'}
-      register={register}
+     <Dropdown
+      value={selectedClient}
+      onChange={(e) => setSelectedClient(e.value)}
+      options={clients}
+      optionLabel='name'
+      placeholder='Setor de exportação'
+      className='w-full md:w-14rem'
      />
-     <Input
-      label='Tipos de arquivo'
-      error={errors.email}
-      placeholder='Selecione'
-      validate={{
-       pattern: {
-        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-        message: 'Data inválida!',
-       },
-      }}
-      registerKey={'date'}
-      register={register}
+     <Dropdown
+      value={selectedClient}
+      onChange={(e) => setSelectedClient(e.value)}
+      options={clients}
+      optionLabel='name'
+      placeholder='Tipos de arquivo'
+      className='w-full md:w-14rem'
      />
-     <Input
-      label='Data'
-      error={errors.email}
-      placeholder='Selecione'
-      validate={{
-       pattern: {
-        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-        message: 'Data inválida!',
-       },
-      }}
-      registerKey={'date'}
-      register={register}
-     />
+     <Calendar value={date} onChange={(e) => setDate(e.value)} showIcon />
 
      <div className='flex justify-between pt-4'>
       <Button name='Entrar' width='w-100' height={'h-12'} textColor={'text-white'} backgroundColor='bg-primar' type='submit' />
