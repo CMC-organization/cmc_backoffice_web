@@ -108,3 +108,59 @@ input:-webkit-autofill:active {
   background: rgba(0, 0, 0, 0.33);
   border-radius: 10px;
   }
+
+  /* Slider Style */
+  .p-slider .p-slider-range {
+    background-color: #C40024; /* Cor de fundo da trilha */
+  }
+  
+  /* Estilizando os polegares (botões) do Slider */
+  .p-slider .p-slider-handle {
+    background-color: white; /* Cor de fundo dos polegares */
+    border: solid 2px #C40024;
+  }
+  
+  /* Estilizando o estado ativo/hover dos polegares */
+  .p-slider .p-slider-handle:active,
+  .p-slider .p-slider-handle:hover {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25); /* Sombra para indicar ativo/hover */
+    background-color: #C40024;
+  }
+  
+  /* Estilizando a trilha do Slider que indica o intervalo selecionado */
+  .p-slider .p-slider-range {
+    background-color: #C40024; /* Cor de fundo da trilha selecionada */
+  }
+
+  /* Inputs PrimeReact */
+
+  .p-dropdown{
+    border: 1px solid #d7d7d7;
+    border-radius: 9px;
+  }
+  .p-dropdown:not(.p-disabled).p-focus, .p-multiselect:not(.p-disabled).p-focus {
+    box-shadow: inset 0 0 0 1px #C40024;
+    border-radius: 9px;
+  }
+
+  .p-button:focus{
+    box-shadow: none;
+  }
+  .p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+    border-color:none;
+  }
+
+  /* Div input calendário */
+  .caledar_div{
+    border: 1px solid #d7d7d7;
+    border-radius: 9px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .caledar_div:focus-within{
+    border: 1px solid #C40024;
+  }

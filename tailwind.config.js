@@ -24,7 +24,7 @@ module.exports = {
     transparent: 'transparent',
     modal: '#E5E5E570',
 
-    offWhite: '#F5F5F5',
+    offWhite: '#FFFFFF',
 
     green1: '#3cb844',
     green2: '#1e9422',
