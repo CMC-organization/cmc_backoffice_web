@@ -164,3 +164,20 @@ input:-webkit-autofill:active {
   .caledar_div:focus-within{
     border: 1px solid #C40024;
   }
+
+  /* Input Switch */
+  .p-inputswitch.p-highlight .p-inputswitch-slider{
+    background-color: #C40024;
+    border: 2px solid transparent;
+  }
+  
+  .p-inputswitch-slider{
+    border: 2px solid #d7d7d7;
+  }
+
+  /* text-card-prodct */
+  .text-card-prodct{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }

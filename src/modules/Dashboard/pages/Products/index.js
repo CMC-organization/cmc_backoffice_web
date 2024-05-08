@@ -2,6 +2,7 @@ import SidebarLayout from '../../../../layouts/Desktop/SidebarLayout';
 import Header from '../../../../components/Header';
 import SearchBar from './Components/SearchBar';
 import Button from '../../../../components/Button';
+import ProductCard from './Components/ProductCard';
 
 const Products = () => {
  return (
@@ -23,6 +24,16 @@ const Products = () => {
          //  setOpenExport(true);
         }}
        />
+      </div>
+      <div className='min-w-full max-w-full max-h-[480px] overflow-x-hidden overflow-y-auto flex flex-col gap-4 pr-4 pb-8'>
+       <ProductCard />
+       <ProductCard />
+       <ProductCard />
+       <ProductCard />
+       <ProductCard />
+       <ProductCard />
+       <ProductCard />
+       <ProductCard />
       </div>
      </div>
     </div>
