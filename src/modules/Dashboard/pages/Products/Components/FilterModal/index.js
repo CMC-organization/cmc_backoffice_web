@@ -1,31 +1,45 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
-import { Calendar } from 'primereact/calendar';
 import { Slider } from 'primereact/slider';
 
 import Filter from '.././../../../../../images/svg/Filter';
 
-import { useOrders } from '../../../../../../context/OrdersContext';
-import Input from '../../../../../../components/Input';
+import { useProducts } from '../../../../../../context/ProductsContext';
 import Button from '../../../../../../components/Button';
 
 const FilterModal = () => {
- const { openFilter, setOpenFilter } = useOrders();
-
- const postFilter = () => {};
-
  const {
   handleSubmit,
   register,
   formState: { errors },
  } = useForm();
+ const { openFilter, setOpenFilter, value, setValue, maxPrice, setMaxPrice, minPrice, setMinPrice } = useProducts();
+
+ const postFilter = () => {};
+
+ const handlePrices = (value) => {
+  const [proposedMin, proposedMax] = value;
+  const minRange = 20;
+
+  if (proposedMin > maxPrice - minRange) {
+   setValue([maxPrice - minRange, maxPrice]);
+   setMinPrice(maxPrice - minRange);
+   setMaxPrice(maxPrice);
+  } else if (proposedMax < minPrice + minRange) {
+   setValue([minPrice, minPrice + minRange]);
+   setMinPrice(minPrice);
+   setMaxPrice(minPrice + minRange);
+  } else {
+   setValue(value);
+   setMaxPrice(value[1]);
+   setMinPrice(value[0]);
+  }
+ };
 
  const clients = [{ name: 'Joao', code: 'Joao' }];
 
  const [selectedClient, setSelectedClient] = useState(null);
- const [date, setDate] = useState(null);
- const [value, setValue] = useState([20, 80]);
 
  return (
   <div className='flex flex-col gap-3'>
@@ -59,28 +73,70 @@ const FilterModal = () => {
        />
       </div>
       <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
-      <form onSubmit={handleSubmit(postFilter)} className='flex flex-col'>
-       <Calendar value={date} onChange={(e) => setDate(e.value)} showIcon />
+      <form onSubmit={handleSubmit(postFilter)} className='flex flex-col gap-4'>
+       <div className='flex flex-col gap-2'>
+        <p className='text-sm font-medium text-black '>Categoria</p>
+        <Dropdown
+         {...register('clients')}
+         value={selectedClient}
+         onChange={(e) => setSelectedClient(e.value)}
+         options={clients}
+         optionLabel='name'
+         placeholder='Selecione'
+         className='w-full md:w-14rem bg-offWhite'
+        />
+       </div>
 
-       <Dropdown
-        value={selectedClient}
-        onChange={(e) => setSelectedClient(e.value)}
-        options={clients}
-        optionLabel='name'
-        placeholder='Cliente'
-        className='w-full md:w-14rem'
-       />
-       <Dropdown
-        value={selectedClient}
-        onChange={(e) => setSelectedClient(e.value)}
-        options={clients}
-        optionLabel='name'
-        placeholder='Status'
-        className='w-full md:w-14rem'
-       />
-       <div className='card flex justify-content-center'>
-        <p>Preço</p>
-        <Slider value={value} onChange={(e) => setValue(e.value)} className='w-14rem' range />
+       <div className='flex flex-col gap-2'>
+        <p className='text-sm font-medium text-black '>Cupom ativo</p>
+        <Dropdown
+         {...register('clients')}
+         value={selectedClient}
+         onChange={(e) => setSelectedClient(e.value)}
+         options={clients}
+         optionLabel='name'
+         placeholder='Selecione'
+         className='w-full md:w-14rem bg-offWhite'
+        />
+       </div>
+
+       <div className='flex flex-col gap-2'>
+        <p className='text-sm font-medium text-black '>Status</p>
+        <Dropdown
+         {...register('clients')}
+         value={selectedClient}
+         onChange={(e) => setSelectedClient(e.value)}
+         options={clients}
+         optionLabel='name'
+         placeholder='Selecione'
+         className='w-full md:w-14rem bg-offWhite'
+        />
+       </div>
+
+       <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-3'>
+         <p className='text-sm font-medium text-black '>Preço</p>
+         <div className='card flex justify-content-center'>
+          <Slider value={value} onChange={(e) => handlePrices(e.value)} className='w-14rem bg-gray-300' range />
+         </div>
+        </div>
+        <div className='flex flex-row gap-4 justify-between'>
+         <input type='text' disabled value={`R$ ${minPrice},00`} className='border-2 rounded-4 p-2 w-1/2 bg-white' />
+         <input type='text' disabled value={`R$ ${maxPrice},00`} className='border-2 rounded-4 p-2 w-1/2 bg-white' />
+        </div>
+       </div>
+
+       <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-3'>
+         <p className='text-sm font-medium text-black '>Estoque</p>
+         <div className='card flex justify-content-center'>
+          <Slider value={value} onChange={(e) => handlePrices(e.value)} className='w-14rem bg-gray-300' range />
+         </div>
+        </div>
+        <div className='flex flex-row gap-4 justify-between'>
+         <input type='text' disabled value={`R$ ${minPrice},00`} className='border-2 rounded-4 p-2 w-1/2 bg-white' />
+         <input type='text' disabled value={`R$ ${maxPrice},00`} className='border-2 rounded-4 p-2 w-1/2 bg-white' />
+        </div>
        </div>
 
        <div className='flex justify-between pt-4'>

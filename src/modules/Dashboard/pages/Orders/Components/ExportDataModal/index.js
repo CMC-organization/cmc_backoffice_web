@@ -7,7 +7,6 @@ import 'primereact/resources/themes/fluent-light/theme.css';
 import XClose from '../../../../../../images/svg/XClose';
 
 import { useOrders } from '../../../../../../context/OrdersContext';
-import Input from '../../../../../../components/Input';
 import Button from '../../../../../../components/Button';
 
 const ExportDataModal = () => {

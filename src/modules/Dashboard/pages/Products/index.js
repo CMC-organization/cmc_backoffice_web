@@ -9,7 +9,7 @@ const Products = () => {
    content={
     <div>
      <div className='flex flex-col gap-9'>
-      <Header page='Pedidos' name='Teste' />
+      <Header page='Produtos' name='Teste' />
       <div className='w-full flex justify-between'>
        <SearchBar />
        <Button
