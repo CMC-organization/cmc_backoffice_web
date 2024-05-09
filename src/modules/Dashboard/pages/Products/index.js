@@ -1,10 +1,15 @@
+import { useProducts } from '../../../../context/ProductsContext';
 import SidebarLayout from '../../../../layouts/Desktop/SidebarLayout';
 import Header from '../../../../components/Header';
 import SearchBar from './Components/SearchBar';
 import Button from '../../../../components/Button';
 import ProductCard from './Components/ProductCard';
+import EditDeleteModal from './Components/EditDeleteModal';
+import DeleteModal from './Components/DeleteModal';
 
 const Products = () => {
+ const { openEditDelete, openDelete } = useProducts();
+
  return (
   <SidebarLayout
    content={
@@ -36,6 +41,8 @@ const Products = () => {
        <ProductCard />
       </div>
      </div>
+     {openEditDelete && <EditDeleteModal />}
+     {openDelete && <DeleteModal />}
     </div>
    }
   />

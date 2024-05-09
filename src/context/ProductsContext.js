@@ -5,6 +5,8 @@ export const ProductsProvider = ({ children }) => {
  const [openFilter, setOpenFilter] = useState(false);
  const [openCategories, setOpenCategories] = useState(false);
  const [openCoupons, setOpenCoupons] = useState(false);
+ const [openEditDelete, setOpenEditDelete] = useState(false);
+ const [openDelete, setOpenDelete] = useState(false);
 
  const [value, setValue] = useState([0, 1000]);
  const [maxPrice, setMaxPrice] = useState(1000);
@@ -19,6 +21,10 @@ export const ProductsProvider = ({ children }) => {
     setOpenCategories,
     openCoupons,
     setOpenCoupons,
+    openEditDelete,
+    setOpenEditDelete,
+    openDelete,
+    setOpenDelete,
     value,
     setValue,
     maxPrice,

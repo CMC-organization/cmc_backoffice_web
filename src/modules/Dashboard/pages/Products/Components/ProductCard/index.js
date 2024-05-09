@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { InputSwitch } from 'primereact/inputswitch';
 
 import TreePoints from '../../../../../../images/svg/TreePoints';
 
-import { InputSwitch } from 'primereact/inputswitch';
+import { useProducts } from '../../../../../../context/ProductsContext';
 
 const ProductCard = () => {
+ const { setOpenEditDelete } = useProducts();
+
  const [status, setStatus] = useState();
 
  return (
@@ -51,7 +54,12 @@ const ProductCard = () => {
      <p className='whitespace-nowrap text-xs font-medium text-font'>Status</p>
     </div>
 
-    <div>
+    <div
+     onClick={() => {
+      setOpenEditDelete(true);
+     }}
+     className='cursor-pointer'
+    >
      <TreePoints />
     </div>
    </div>
