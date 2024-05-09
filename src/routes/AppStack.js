@@ -6,6 +6,8 @@ import { addLocale } from 'primereact/api';
 import Login from '../modules/Auth/pages/Login';
 import Orders from '../modules/Dashboard/pages/Orders';
 import Products from '../modules/Dashboard/pages/Products';
+import CreateProducts from '../modules/Dashboard/pages/Products/CreateProduct';
+import EditProduct from '../modules/Dashboard/pages/Products/EditProduct';
 
 /* DASHBOARD */
 
@@ -28,6 +30,8 @@ const AppStack = () => {
     {/* <Route path='/login' element={<Login />} /> */}
     <Route path='/orders' element={<Orders />} />
     <Route path='/products' element={<Products />} />
+    <Route path='/products/create' element={<CreateProducts />} />
+    <Route path='/products/edit' element={<EditProduct />} />
     {/* <Route path='*' element={<Navigate to='/login' />} /> */}
    </Routes>
   </Router>

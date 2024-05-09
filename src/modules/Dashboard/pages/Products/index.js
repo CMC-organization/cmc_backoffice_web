@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { useProducts } from '../../../../context/ProductsContext';
 import SidebarLayout from '../../../../layouts/Desktop/SidebarLayout';
 import Header from '../../../../components/Header';
@@ -9,6 +11,7 @@ import DeleteModal from './Components/DeleteModal';
 
 const Products = () => {
  const { openEditDelete, openDelete } = useProducts();
+ const navigate = useNavigate();
 
  return (
   <SidebarLayout
@@ -26,7 +29,7 @@ const Products = () => {
         backgroundColor='bg-primar'
         type='submit'
         onClick={() => {
-         //  setOpenExport(true);
+         navigate('/products/create');
         }}
        />
       </div>
