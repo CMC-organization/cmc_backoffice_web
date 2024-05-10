@@ -44,7 +44,7 @@ const FilterModal = () => {
  return (
   <div className='flex flex-col gap-3'>
    <div
-    className='border border-gray-200 rounded-md p-2.5 cursor-pointer z-20'
+    className='border border-gray-200 bg-white rounded-md p-2.5 cursor-pointer z-20'
     onClick={() => {
      setOpenFilter(!openFilter);
     }}
@@ -59,7 +59,7 @@ const FilterModal = () => {
        setOpenFilter(false);
       }}
      />
-     <div className='w-96 min-h-80 bg-offWhite rounded absolute top-44 z-20 px-6 py-6  drop-shadow-md shadow-slate-700'>
+     <div className='w-96 h-2/3 bg-offWhite shadow-slate-700 drop-shadow-md p-6 rounded absolute top-44 z-20 overflow-y-auto'>
       <div className='flex items-center justify-between'>
        <p className='text-lg text-black font-medium'>Filtros</p>
        <Button

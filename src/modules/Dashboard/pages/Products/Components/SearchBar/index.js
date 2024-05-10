@@ -2,7 +2,7 @@ import SearchIcon from '.././../../../../../images/svg/SearchIcon';
 
 import FilterModal from '../Modals/FilterModal';
 import CategoriesModal from '../Modals/CategoriesModal';
-import CouponsModal from '../CouponsModal';
+import CouponsModal from '../Modals/CouponsModal';
 
 const SearchBar = () => {
  return (
