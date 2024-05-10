@@ -6,8 +6,8 @@ import Header from '../../../../components/Header';
 import SearchBar from './Components/SearchBar';
 import Button from '../../../../components/Button';
 import ProductCard from './Components/ProductCard';
-import EditDeleteModal from './Components/EditDeleteModal';
-import DeleteModal from './Components/DeleteModal';
+import EditDeleteModal from './Components/Modals/EditDeleteModal';
+import DeleteModal from './Components/Modals/DeleteModal';
 
 const Products = () => {
  const { openEditDelete, openDelete } = useProducts();

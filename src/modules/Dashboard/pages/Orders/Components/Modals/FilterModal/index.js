@@ -3,14 +3,12 @@ import { useForm } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { Slider } from 'primereact/slider';
-// import 'primereact/resources/themes/nova-accent/theme.css';
-// import 'primereact/resources/themes/viva-light/theme.css';
 
-import Filter from '.././../../../../../images/svg/Filter';
+import Filter from '../../../../../../../images/svg/Filter';
 
-import { useOrders } from '../../../../../../context/OrdersContext';
-import Input from '../../../../../../components/Input';
-import Button from '../../../../../../components/Button';
+import { useOrders } from '../../../../../../../context/OrdersContext';
+import Input from '../../../../../../../components/Input';
+import Button from '../../../../../../../components/Button';
 
 const FilterModal = () => {
  const { handleSubmit, register } = useForm();

@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
 
-import XClose from '../../../../../../images/svg/XClose';
+import XClose from '../../../../../../../images/svg/XClose';
 
-import { useProducts } from '../../../../../../context/ProductsContext';
-import Button from '../../../../../../components/Button';
+import { useProducts } from '../../../../../../../context/ProductsContext';
+import Button from '../../../../../../../components/Button';
 
 const DeleteModal = () => {
  const { setOpenDelete } = useProducts();
@@ -16,13 +16,14 @@ const DeleteModal = () => {
   formState: { errors },
  } = useForm();
 
+ const onCloseModal = (e) => {
+  if (e.target.id === 'modalContainer') {
+   setOpenDelete(false);
+  }
+ };
+
  return (
-  <div
-   className='w-screen h-screen flex items-center justify-center fixed bg-modal  top-0 left-0 z-20'
-   onClick={() => {
-    setOpenDelete(false);
-   }}
-  >
+  <div className='w-screen h-screen flex items-center justify-center fixed bg-modal  top-0 left-0 z-20' id='modalContainer' onClick={onCloseModal}>
    <div className='w-96 min-h-80 bg-offWhite rounded  z-20 px-6 py-6  drop-shadow-md shadow-slate-700'>
     <form onSubmit={handleSubmit(postFilter)}>
      <div className='flex items-center justify-between'>

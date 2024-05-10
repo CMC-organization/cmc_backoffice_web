@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
 
-import CategorysIcon from '../../../../../../images/svg/CategorysIcon';
-import XClose from '../../../../../../images/svg/XClose';
+import CategorysIcon from '../../../../../../../images/svg/CategorysIcon';
+import XClose from '../../../../../../../images/svg/XClose';
 
-import { useProducts } from '../../../../../../context/ProductsContext';
-import Button from '../../../../../../components/Button';
+import { useProducts } from '../../../../../../../context/ProductsContext';
+import Button from '../../../../../../../components/Button';
 
 const CategoriesModal = () => {
  const { openCategories, setOpenCategories } = useProducts();

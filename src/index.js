@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ToastContainer } from 'react-toastify';
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/fluent-light/theme.css';
 
 import reportWebVitals from './reportWebVitals';
 import AppStack from './routes/AppStack';

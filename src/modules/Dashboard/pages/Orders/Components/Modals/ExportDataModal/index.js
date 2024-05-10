@@ -2,12 +2,11 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
-import 'primereact/resources/themes/fluent-light/theme.css';
 
-import XClose from '../../../../../../images/svg/XClose';
+import XClose from '../../../../../../../images/svg/XClose';
 
-import { useOrders } from '../../../../../../context/OrdersContext';
-import Button from '../../../../../../components/Button';
+import { useOrders } from '../../../../../../../context/OrdersContext';
+import Button from '../../../../../../../components/Button';
 
 const ExportDataModal = () => {
  const { setOpenExport } = useOrders();
@@ -25,14 +24,15 @@ const ExportDataModal = () => {
  const [selectedClient, setSelectedClient] = useState(null);
  const [date, setDate] = useState(null);
 
+ const onCloseModal = (e) => {
+  if (e.target.id === 'modalContainer') {
+   setOpenExport(false);
+  }
+ };
+
  return (
   <>
-   <div
-    className='w-screen h-screen flex items-center justify-center fixed bg-modal  top-0 left-0 z-20'
-    onClick={() => {
-     setOpenExport(false);
-    }}
-   >
+   <div className='w-screen h-screen flex items-center justify-center fixed bg-modal  top-0 left-0 z-20' id='modalContainer' onClick={onCloseModal}>
     <div className='w-96 min-h-80 mx-0 bg-offWhite rounded z-30 px-6 py-6  drop-shadow-md shadow-slate-700'>
      <form onSubmit={handleSubmit(postFilter)}>
       <div className='flex items-center justify-between'>

@@ -6,7 +6,7 @@ import Header from '../../../../components/Header';
 import SidebarLayout from '../../../../layouts/Desktop/SidebarLayout';
 import OrdersCard from './Components/OrdersCard';
 import SearchBar from './Components/SearchBar';
-import ExportDataModal from './Components/ExportDataModal';
+import ExportDataModal from './Components/Modals/ExportDataModal';
 import { useOrders } from '../../../../context/OrdersContext';
 
 const Orders = () => {

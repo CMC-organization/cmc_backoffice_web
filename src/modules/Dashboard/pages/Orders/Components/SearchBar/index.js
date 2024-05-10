@@ -1,5 +1,5 @@
 import SearchIcon from '.././../../../../../images/svg/SearchIcon';
-import FilterModal from '../FilterModal';
+import FilterModal from '../Modals/FilterModal';
 
 const SearchBar = () => {
  return (

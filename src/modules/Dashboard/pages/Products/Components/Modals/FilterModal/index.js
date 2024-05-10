@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
 import { Slider } from 'primereact/slider';
 
-import Filter from '.././../../../../../images/svg/Filter';
+import Filter from '../../../../../../../images/svg/Filter';
 
-import { useProducts } from '../../../../../../context/ProductsContext';
-import Button from '../../../../../../components/Button';
+import { useProducts } from '../../../../../../../context/ProductsContext';
+import Button from '../../../../../../../components/Button';
 
 const FilterModal = () => {
  const {
