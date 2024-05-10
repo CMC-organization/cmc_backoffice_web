@@ -7,16 +7,16 @@ import Filter from '../../../../../../../images/svg/Filter';
 
 import { useProducts } from '../../../../../../../context/ProductsContext';
 import Button from '../../../../../../../components/Button';
+import InputSelect from '../../../../../../../components/InputSelect';
 
 const FilterModal = () => {
- const {
-  handleSubmit,
-  register,
-  formState: { errors },
- } = useForm();
  const { openFilter, setOpenFilter, value, setValue, maxPrice, setMaxPrice, minPrice, setMinPrice } = useProducts();
 
- const postFilter = () => {};
+ const { handleSubmit, control, reset } = useForm();
+
+ const onSubmit = (data) => {
+  console.log(data);
+ };
 
  const handlePrices = (value) => {
   const [proposedMin, proposedMax] = value;
@@ -37,9 +37,12 @@ const FilterModal = () => {
   }
  };
 
- const clients = [{ name: 'Joao', code: 'Joao' }];
-
- const [selectedClient, setSelectedClient] = useState(null);
+ const categories = [{ name: 'Porta', code: 'Porta' }];
+ const coupons = [{ name: 'ABC', code: 'ABC' }];
+ const status = [
+  { name: 'Ok', code: 'OK' },
+  { name: 'Error', code: 'Err' },
+ ];
 
  return (
   <div className='flex flex-col gap-3'>
@@ -70,48 +73,16 @@ const FilterModal = () => {
         backgroundColor='bg-offWhite'
         fontSize={'text-sm'}
         type='submit'
+        onClick={reset}
        />
       </div>
       <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
-      <form onSubmit={handleSubmit(postFilter)} className='flex flex-col gap-4'>
-       <div className='flex flex-col gap-2'>
-        <p className='text-sm font-medium text-black '>Categoria</p>
-        <Dropdown
-         {...register('clients')}
-         value={selectedClient}
-         onChange={(e) => setSelectedClient(e.value)}
-         options={clients}
-         optionLabel='name'
-         placeholder='Selecione'
-         className='w-full md:w-14rem bg-offWhite'
-        />
-       </div>
+      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
+       <InputSelect label='Categoria' name='categorie' control={control} placeholder='Selecione' options={categories} optionLabel={'name'} />
 
-       <div className='flex flex-col gap-2'>
-        <p className='text-sm font-medium text-black '>Cupom ativo</p>
-        <Dropdown
-         {...register('clients')}
-         value={selectedClient}
-         onChange={(e) => setSelectedClient(e.value)}
-         options={clients}
-         optionLabel='name'
-         placeholder='Selecione'
-         className='w-full md:w-14rem bg-offWhite'
-        />
-       </div>
+       <InputSelect label='Cupom ativo' name='coupon' control={control} placeholder='Selecione' options={coupons} optionLabel={'name'} />
 
-       <div className='flex flex-col gap-2'>
-        <p className='text-sm font-medium text-black '>Status</p>
-        <Dropdown
-         {...register('clients')}
-         value={selectedClient}
-         onChange={(e) => setSelectedClient(e.value)}
-         options={clients}
-         optionLabel='name'
-         placeholder='Selecione'
-         className='w-full md:w-14rem bg-offWhite'
-        />
-       </div>
+       <InputSelect label='Status' name='status' control={control} placeholder='Selecione' options={status} optionLabel={'name'} />
 
        <div className='flex flex-col gap-4'>
         <div className='flex flex-col gap-3'>

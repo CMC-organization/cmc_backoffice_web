@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { Slider } from 'primereact/slider';
@@ -7,14 +7,15 @@ import { Slider } from 'primereact/slider';
 import Filter from '../../../../../../../images/svg/Filter';
 
 import { useOrders } from '../../../../../../../context/OrdersContext';
-import Input from '../../../../../../../components/Input';
 import Button from '../../../../../../../components/Button';
+import InputSelect from '../../../../../../../components/InputSelect';
 
 const FilterModal = () => {
- const { handleSubmit, register } = useForm();
  const { openFilter, setOpenFilter, value, setValue, maxPrice, setMaxPrice, minPrice, setMinPrice } = useOrders();
 
- const postFilter = (data) => {
+ const { handleSubmit, register, control } = useForm();
+
+ const onSubmit = (data) => {
   console.log(data);
  };
 
@@ -42,12 +43,10 @@ const FilterModal = () => {
   { name: 'Gustavo', code: 'Gustavo' },
  ];
  const status = [
-  { name: 'Joao', code: 'Joao' },
-  { name: 'Gustavo', code: 'Gustavo' },
+  { name: 'Ok', code: 'OK' },
+  { name: 'Error', code: 'Err' },
  ];
 
- const [selectedClient, setSelectedClient] = useState(null);
- const [selectedStatus, setSelectedStatus] = useState(null);
  const [date, setDate] = useState(null);
 
  return (
@@ -82,7 +81,7 @@ const FilterModal = () => {
        />
       </div>
       <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
-      <form onSubmit={handleSubmit(postFilter)} className='flex flex-col gap-4'>
+      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
        <div className='flex flex-col gap-2'>
         <p className='text-sm font-medium text-black '>Data</p>
         <div class='caledar_div'>
@@ -99,31 +98,10 @@ const FilterModal = () => {
         </div>
        </div>
 
-       <div className='flex flex-col gap-2'>
-        <p className='text-sm font-medium text-black '>Cliente</p>
-        <Dropdown
-         {...register('clients')}
-         value={selectedClient}
-         onChange={(e) => setSelectedClient(e.value)}
-         options={clients}
-         optionLabel='name'
-         placeholder='Selecione'
-         className='w-full md:w-14rem bg-offWhite'
-        />
-       </div>
+       <InputSelect label='Cliente' name='clients' control={control} placeholder='Selecione' options={clients} optionLabel={'name'} />
 
-       <div className='flex flex-col gap-2'>
-        <p className='text-sm font-medium text-black'>Status</p>
-        <Dropdown
-         {...register('status')}
-         value={selectedStatus}
-         onChange={(e) => setSelectedStatus(e.value)}
-         options={status}
-         optionLabel='name'
-         placeholder='Selecione'
-         className='w-full md:w-14rem bg-offWhite'
-        />
-       </div>
+       <InputSelect label='Status' name='status' control={control} placeholder='Selecione' options={status} optionLabel={'name'} />
+
        <div className='flex flex-col gap-4'>
         <div className='flex flex-col gap-3'>
          <p className='text-sm font-medium text-black '>Preço</p>
