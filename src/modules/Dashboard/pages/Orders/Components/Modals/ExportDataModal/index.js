@@ -1,18 +1,16 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Dropdown } from 'primereact/dropdown';
-import { Calendar } from 'primereact/calendar';
 
 import XClose from '../../../../../../../images/svg/XClose';
 
 import { useOrders } from '../../../../../../../context/OrdersContext';
 import Button from '../../../../../../../components/Button';
 import InputSelect from '../../../../../../../components/InputSelect';
+import InputCalendar from '../../../../../../../components/InputCalendar';
 
 const ExportDataModal = () => {
  const { setOpenExport } = useOrders();
 
- const { handleSubmit, register, control } = useForm();
+ const { handleSubmit, control } = useForm();
 
  const onSubmit = (data) => {
   console.log(data);
@@ -30,9 +28,6 @@ const ExportDataModal = () => {
   { name: 'Pasta', code: 'Pasta' },
   { name: 'Dado', code: 'Dado' },
  ];
-
- const [selectedClient, setSelectedClient] = useState(null);
- const [date, setDate] = useState(null);
 
  const onCloseModal = (e) => {
   if (e.target.id === 'modalContainer') {
@@ -67,21 +62,7 @@ const ExportDataModal = () => {
 
        <InputSelect label='Tipos de arquivo' name='files' control={control} placeholder='Selecione' options={files} optionLabel={'name'} />
 
-       <div className='flex flex-col gap-2'>
-        <p className='text-sm font-medium text-black '>Data</p>
-        <div class='caledar_div'>
-         <Calendar
-          {...register('date')}
-          value={date}
-          onChange={(e) => setDate(e.value)}
-          placeholder='DD/MM/AAAA'
-          showIcon
-          locale='pt'
-          dateFormat='dd/mm/yy'
-          className='w-full pl-1.5'
-         />
-        </div>
-       </div>
+       <InputCalendar label='Data' name='date' control={control} placeholder='DD/MM/AAAA' />
       </div>
      </form>
     </div>

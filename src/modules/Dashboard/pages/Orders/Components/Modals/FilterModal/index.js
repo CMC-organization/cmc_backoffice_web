@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { Dropdown } from 'primereact/dropdown';
-import { Calendar } from 'primereact/calendar';
+import { useForm } from 'react-hook-form';
 import { Slider } from 'primereact/slider';
 
 import Filter from '../../../../../../../images/svg/Filter';
@@ -9,6 +6,7 @@ import Filter from '../../../../../../../images/svg/Filter';
 import { useOrders } from '../../../../../../../context/OrdersContext';
 import Button from '../../../../../../../components/Button';
 import InputSelect from '../../../../../../../components/InputSelect';
+import InputCalendar from '../../../../../../../components/InputCalendar';
 
 const FilterModal = () => {
  const { openFilter, setOpenFilter, value, setValue, maxPrice, setMaxPrice, minPrice, setMinPrice } = useOrders();
@@ -47,8 +45,6 @@ const FilterModal = () => {
   { name: 'Error', code: 'Err' },
  ];
 
- const [date, setDate] = useState(null);
-
  return (
   <div className='flex flex-col gap-3'>
    <div
@@ -82,21 +78,7 @@ const FilterModal = () => {
       </div>
       <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
-       <div className='flex flex-col gap-2'>
-        <p className='text-sm font-medium text-black '>Data</p>
-        <div class='caledar_div'>
-         <Calendar
-          {...register('date')}
-          value={date}
-          onChange={(e) => setDate(e.value)}
-          placeholder='DD/MM/AAAA'
-          showIcon
-          locale='pt'
-          dateFormat='dd/mm/yy'
-          className='w-full pl-1.5'
-         />
-        </div>
-       </div>
+       <InputCalendar label='Data' name='date' control={control} placeholder='DD/MM/AAAA' />
 
        <InputSelect label='Cliente' name='clients' control={control} placeholder='Selecione' options={clients} optionLabel={'name'} />
 
