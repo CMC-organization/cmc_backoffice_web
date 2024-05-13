@@ -76,6 +76,7 @@ const Sidebar = () => {
        setClients(true);
        setPurchases(false);
        setAccess(false);
+       navigate('/clients');
       }}
      >
       <Clients color='#787486' />
@@ -96,6 +97,7 @@ const Sidebar = () => {
        setClients(false);
        setPurchases(true);
        setAccess(false);
+       navigate('/purchases');
       }}
      >
       <Purchase color='#787486' />
@@ -116,6 +118,7 @@ const Sidebar = () => {
        setClients(false);
        setPurchases(false);
        setAccess(true);
+       navigate('/access');
       }}
      >
       <Access color='#787486' />
