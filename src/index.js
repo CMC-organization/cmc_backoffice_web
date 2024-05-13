@@ -12,6 +12,7 @@ import { GlobalProvider } from './context/GlobalContext';
 import './index.css';
 import { OrdersProvider } from './context/OrdersContext';
 import { ProductsProvider } from './context/ProductsContext';
+import { AccessProvider } from './context/AccessContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,10 +21,12 @@ root.render(
   <GlobalProvider>
    <OrdersProvider>
     <ProductsProvider>
-     <PrimeReactProvider>
-      <ToastContainer />
-      <AppStack />
-     </PrimeReactProvider>
+     <AccessProvider>
+      <PrimeReactProvider>
+       <ToastContainer />
+       <AppStack />
+      </PrimeReactProvider>
+     </AccessProvider>
     </ProductsProvider>
    </OrdersProvider>
   </GlobalProvider>

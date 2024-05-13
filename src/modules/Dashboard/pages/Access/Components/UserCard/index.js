@@ -1,6 +1,10 @@
 import TreePoints from '../../../../../../images/svg/TreePoints';
 
+import { useAccess } from '../../../../../../context/AccessContext';
+
 const UserCard = () => {
+ const { setOpenEditDelete } = useAccess();
+
  return (
   <div className='w-full h-20 flex items-center justify-between border border-border rounded-lg px-5 py-3'>
    <div className='w-[5%] flex justify-start'>
@@ -12,7 +16,12 @@ const UserCard = () => {
    <div className='w-[30%] text-start font-medium'>Mateus barbosa</div>
    <div className='w-[30%] text-start font-medium'>mateus@startpn.com</div>
    <div className='w-[30%] text-start font-medium'>Dashboard, Pedidos, Produtos, avaliações, gerenciar acessos</div>
-   <div className='w-[5%] flex justify-end cursor-pointer'>
+   <div
+    className='w-[5%] flex justify-end cursor-pointer'
+    onClick={() => {
+     setOpenEditDelete(true);
+    }}
+   >
     <TreePoints />
    </div>
   </div>

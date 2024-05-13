@@ -1,10 +1,15 @@
 import Button from '../../../../components/Button';
 import Header from '../../../../components/Header';
+import { useAccess } from '../../../../context/AccessContext';
 import SidebarLayout from '../../../../layouts/Desktop/SidebarLayout';
+import DeleteModal from './Components/Modals/DeleteModal';
+import EditDeleteModal from './Components/Modals/EditDeleteModal';
 import SearchBar from './Components/SearchBar';
 import UserCard from './Components/UserCard';
 
 const Access = () => {
+ const { openEditDelete, openDelete } = useAccess();
+
  return (
   <SidebarLayout
    content={
@@ -34,6 +39,8 @@ const Access = () => {
       </div>
       <UserCard />
      </div>
+     {openEditDelete && <EditDeleteModal />}
+     {openDelete && <DeleteModal />}
     </div>
    }
   />

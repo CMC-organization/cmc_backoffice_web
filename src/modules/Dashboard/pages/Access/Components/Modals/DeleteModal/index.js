@@ -1,10 +1,11 @@
 import XClose from '../../../../../../../images/svg/XClose';
 
-import { useProducts } from '../../../../../../../context/ProductsContext';
+import { useAccess } from '../../../../../../../context/AccessContext';
 import Button from '../../../../../../../components/Button';
 
 const DeleteModal = () => {
- const { setOpenDelete } = useProducts();
+ const { setOpenDelete } = useAccess();
+
  const onCloseModal = (e) => {
   if (e.target.id === 'modalContainer') {
    setOpenDelete(false);
@@ -31,7 +32,7 @@ const DeleteModal = () => {
     <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
     <div className='w-full flex items-center justify-center cursor-pointer pt-11'>
      <p className='text-lg text-black font-regular text-center'>
-      Tem certeza que deseja excluir o produto <p className='text-lg text-black font-medium'>Porta Lambril Preta ?</p>
+      Tem certeza que deseja excluir o usuário <p className='text-lg text-black font-medium'>Mateus Barbosa ?</p>
      </p>
     </div>
    </div>
