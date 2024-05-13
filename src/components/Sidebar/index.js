@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 
-import Logo from '../../images/svg/Logo';
-import Cart from '../../images/svg/Cart';
-import Products from '../../images/svg/Products';
-import Clients from '../../images/svg/Clients';
-import Purchase from '../../images/svg/Purchase';
 import Access from '../../images/svg/Access';
+import Cart from '../../images/svg/Cart';
+import Clients from '../../images/svg/Clients';
 import Exit from '../../images/svg/Exit';
+import Logo from '../../images/svg/Logo';
+import Products from '../../images/svg/Products';
+import Purchase from '../../images/svg/Purchase';
 
 import { useGlobal } from '../../context/GlobalContext';
 
@@ -29,9 +29,9 @@ const Sidebar = () => {
      <div
       className='flex items-center gap-3 py-2 cursor-pointer'
       onClick={() => {
-       setOrders(true);
+        setOrders(true);
+        setClients(false);
        setProducts(false);
-       setClients(false);
        setPurchases(false);
        setAccess(false);
        navigate('/orders');
@@ -71,11 +71,12 @@ const Sidebar = () => {
      <div
       className='flex items-center gap-3 py-2 cursor-pointer'
       onClick={() => {
-       setOrders(false);
-       setProducts(false);
-       setClients(true);
+        setOrders(false);
+        setProducts(false);
+        setClients(true);
        setPurchases(false);
        setAccess(false);
+       navigate('/clients');
       }}
      >
       <Clients color='#787486' />
