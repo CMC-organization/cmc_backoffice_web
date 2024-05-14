@@ -30,6 +30,10 @@ const NewClientModal = () => {
   }
  };
 
+ const handleCreate = async (data) => {
+  console.log(data)
+};
+
  return (
   <div className='flex flex-col gap-3'>
        <Button
@@ -44,7 +48,7 @@ const NewClientModal = () => {
        />
    {openNewClient && (
     <div className='w-screen h-screen flex items-center justify-center fixed bg-modal top-0 left-0 z-20' id='modalContainer' onClick={onCloseModal}>
-     <div className='w-[605px] min-h-[566px] bg-offWhite rounded-3xl z-20 drop-shadow-md shadow-slate-700'>
+     <form onSubmit={handleSubmit(handleCreate)} className='w-[605px] min-h-[566px] bg-offWhite rounded-3xl z-20 drop-shadow-md shadow-slate-700'>
        
       <div className='flex items-center justify-between p-6'>
         <div className='flex items-center gap-3'>
@@ -138,7 +142,7 @@ const NewClientModal = () => {
           </div>
         </div>
       </div>
-     </div>
+     </form>
     </div>
    )}
   </div>
