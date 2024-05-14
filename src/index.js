@@ -9,6 +9,7 @@ import { GlobalProvider } from './context/GlobalContext';
 import { OrdersProvider } from './context/OrdersContext';
 import { ProductsProvider } from './context/ProductsContext';
 import { ClientsProvider } from './context/ClientsContext';
+import { PurchaseProvider } from './context/PurchasesContext';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppStack from './routes/AppStack';
@@ -21,10 +22,12 @@ root.render(
    <OrdersProvider>
     <ProductsProvider>
     <ClientsProvider>
+    <PurchaseProvider>
      <PrimeReactProvider>
       <ToastContainer />
       <AppStack />
      </PrimeReactProvider>
+     </PurchaseProvider>
      </ClientsProvider>
     </ProductsProvider>
    </OrdersProvider>
