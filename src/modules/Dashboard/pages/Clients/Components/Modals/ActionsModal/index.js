@@ -1,9 +1,11 @@
 import { useClients } from '../../../../../../../context/ClientsContext';
 import TreePoints from '../../../../../../../images/svg/TreePoints';
 import XClose from '../../../../../../../images/svg/XClose';
+import DeleteAccessModal from '../DeleteAccessModal';
+import EditClientModal from '../EditClientModal';
 
 const ActionsModal = () => {
- const { openActions, setOpenActions, setOpenDelete, setOpenEdit } = useClients();
+ const { openActions, setOpenActions } = useClients();
 
  const onCloseModal = (e) => {
   if (e.target.id === 'modalContainer') {
@@ -40,24 +42,8 @@ const ActionsModal = () => {
         </div>
        <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
        <div>
-            <div
-            className='bg-white rounded-md p-2.5 cursor-pointer'
-            onClick={() => {
-                setOpenEdit(true);
-                setOpenActions(false);
-            }}
-            >
-                Editar Cliente
-            </div>
-            <div
-            className='bg-white rounded-md p-2.5 cursor-pointer'
-            onClick={() => {
-                setOpenDelete(true);
-                setOpenActions(false);
-            }}
-            >
-                Excluir acesso cliente
-            </div>
+          <DeleteAccessModal />
+          <EditClientModal />
        </div>
      </div>
     </div>
