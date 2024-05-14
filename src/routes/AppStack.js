@@ -8,6 +8,7 @@ import Orders from '../modules/Dashboard/pages/Orders';
 import Products from '../modules/Dashboard/pages/Products';
 import CreateProducts from '../modules/Dashboard/pages/Products/CreateProduct';
 import EditProduct from '../modules/Dashboard/pages/Products/EditProduct';
+import Clients from '../modules/Dashboard/pages/Clients';
 
 /* DASHBOARD */
 
@@ -32,6 +33,7 @@ const AppStack = () => {
     <Route path='/products' element={<Products />} />
     <Route path='/products/create' element={<CreateProducts />} />
     <Route path='/products/edit' element={<EditProduct />} />
+    <Route path='/clients' element={<Clients />} />
     {/* <Route path='*' element={<Navigate to='/login' />} /> */}
    </Routes>
   </Router>
