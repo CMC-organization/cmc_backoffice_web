@@ -1,13 +1,12 @@
-import ApprovedIcon from '../../../../../../../images/svg/ApprovedIcon';
-import XClose from '../../../../../../../images/svg/XClose';
 import { useClients } from '../../../../../../../context/ClientsContext';
+import XClose from '../../../../../../../images/svg/XClose';
 
-const ApprovedModal = () => {
- const { openApproved, setOpenApproved } = useClients();
+const EditClientModal = () => {
+ const { openEdit, setOpenEdit, setOpenActions } = useClients();
 
  const onCloseModal = (e) => {
   if (e.target.id === 'modalContainer') {
-    setOpenApproved(false);
+    setOpenEdit(false);
   }
  };
 
@@ -16,23 +15,24 @@ const ApprovedModal = () => {
    <div
     className='border border-gray-200 bg-white rounded-md p-2.5 cursor-pointer'
     onClick={() => {
-        setOpenApproved(true);
+        setOpenEdit(true);
+        setOpenActions(false);
     }}
    >
-    <ApprovedIcon />
+    Editar Cliente
    </div>
-   {openApproved && (
+   {openEdit && (
     <div className='w-screen h-screen flex items-center justify-center fixed bg-modal  top-0 left-0 z-20' id='modalContainer' onClick={onCloseModal}>
      <div className='w-[585px] min-h-80 bg-offWhite rounded-3xl  z-20 px-6 py-6  drop-shadow-md shadow-slate-700'>
        <div className='flex items-center justify-between'>
         <div className='flex items-center gap-3'>
 
-         <p className='text-lg text-black font-medium'>Aprovações de cadastro</p>
+         <p className='text-lg text-black font-medium'>Editar cliente</p>
         </div>
         <div
           className='cursor-pointer'
           onClick={() => {
-            setOpenApproved(false);
+            setOpenEdit(false);
           }}
          >
           <XClose />
@@ -46,4 +46,4 @@ const ApprovedModal = () => {
  );
 };
 
-export default ApprovedModal;
+export default EditClientModal;

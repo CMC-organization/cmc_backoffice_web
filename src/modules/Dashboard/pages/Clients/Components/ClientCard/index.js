@@ -1,13 +1,9 @@
 import { InputSwitch } from 'primereact/inputswitch';
 import { useState } from 'react';
 
-import TreePoints from '../../../../../../images/svg/TreePoints';
-
-import { useProducts } from '../../../../../../context/ProductsContext';
+import ActionsModal from '../Modals/ActionsModal';
 
 const ClientCard = () => {
- const { setOpenEditDelete } = useProducts();
-
  const [status, setStatus] = useState();
 
  return (
@@ -48,14 +44,7 @@ const ClientCard = () => {
     </div>
 
 
-    <div
-     onClick={() => {
-      setOpenEditDelete(true);
-     }}
-     className='cursor-pointer'
-    >
-     <TreePoints />
-    </div>
+    <ActionsModal/>
    </div>
   </div>
  );
