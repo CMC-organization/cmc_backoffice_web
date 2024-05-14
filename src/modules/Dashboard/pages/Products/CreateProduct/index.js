@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useState, useRef } from 'react';
 
 import ArrowLeft from '../../../../../images/svg/ArrowLeft';
+import ImgPlaceholderIcon from '../../../../../images/svg/ImgPlaceholderIcon';
 
 import SidebarLayout from '../../../../../layouts/Desktop/SidebarLayout';
 import Header from '../../../../../components/Header';
 import Input from '../../../../../components/Input';
-import ImagesProduct from '../Components/ImagesProduct';
 import Button from '../../../../../components/Button';
 
 const CreateProducts = () => {
@@ -17,6 +18,18 @@ const CreateProducts = () => {
  } = useForm();
 
  const navigate = useNavigate();
+ const [images, setImages] = useState([])
+ const fileInputRef = useRef()
+
+ const handleFile = (e) => {
+    const newFile = e.target.files
+    const newFilesArray = [...images, newFile[0]]
+    setImages(newFilesArray)
+  }
+
+  const handleAddImage = () => {
+    fileInputRef.current.click()
+  }
 
  const postInfos = () => {};
 
@@ -89,10 +102,44 @@ const CreateProducts = () => {
         <div className='border-b border-border py-3 pl-8'>
          <p className='text-base text-black font-medium'>Conteúdo do produto</p>
         </div>
-        <div className='flex flex-col p-7'>
-         <div>
-          <ImagesProduct />
-         </div>
+        <div className="p-3 w-full flex flex-nowrap gap-4 overflow-x-auto items-center">
+            {images.length > 0 ? (
+            images.map((file, key) => {
+                return (
+                <div
+                    key={key}
+                    className="min-w-28 min-h-28  max-w-28 max-h-28 border border-gray-60 rounded-lg p-1"
+                >
+                    <img
+                    src={URL.createObjectURL(file)}
+                    alt="imagem do produto"
+                    className="w-full h-full object-cover"
+                    />
+                </div>
+                )
+            })
+            ) : (
+                <div className="border min-w-28 max-w-28 min-h-28 max-h-28 flex flex-col justify-center items-center gap-2 rounded-md border-dashed text-center">
+                    <ImgPlaceholderIcon />
+                    <span className='text-sm px-2'>Upload foto ou vídeo</span>
+                </div>
+            )}
+            <button
+                    className="bg-primar text-white min-w-8 min-h-8 rounded-full text-2xl"
+                    type="button"
+                    onClick={handleAddImage}
+                    disabled={images.length >= 5}
+                >
+                    +
+            </button>
+            <input
+                type="file"
+                name="file"
+                accept="image/png, image/jpeg, image/webp"
+                ref={fileInputRef}
+                onChange={handleFile}
+                className="hidden"
+            />
         </div>
        </div>
        <div className='w-full border border-border rounded-xl'>
