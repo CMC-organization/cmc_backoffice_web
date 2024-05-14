@@ -74,14 +74,14 @@ const NewClientModal = () => {
             <div className="absolute bg-primar bottom-1 right-1 rounded-full p-1 border-2 border-white">
               <CamIcon />
             </div>
+            <input 
+              type="file" 
+              name="avatar" 
+              id="avatar"
+              className='hidden'
+              onChange={handleAvatarChange} 
+            />
           </div>
-          <input 
-            type="file" 
-            name="avatar" 
-            id="avatar"
-            className='hidden'
-            onChange={handleAvatarChange} 
-          />
         </div>
 
         <div className='grid grid-cols-2 gap-4 p-6'>
