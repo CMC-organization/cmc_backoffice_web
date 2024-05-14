@@ -1,10 +1,16 @@
 import Header from '../../../../components/Header';
 import SidebarLayout from '../../../../layouts/Desktop/SidebarLayout';
 import ClientCard from './Components/ClientCard';
+import ActionsModal from './Components/Modals/ActionsModal';
 import NewClientModal from './Components/Modals/NewClientModal';
 import SearchBar from './Components/SearchBar';
+import { useClients } from '../../../../context/ClientsContext';
+import DeleteAccessModal from './Components/Modals/DeleteAccessModal';
+import EditClientModal from './Components/Modals/EditClientModal';
 
 const Clients = () => {
+ const { openActions, openDelete, openEdit } = useClients();
+
  return (
   <SidebarLayout
    content={
@@ -26,6 +32,9 @@ const Clients = () => {
        <ClientCard />
       </div>
      </div>
+     {openActions &&  <ActionsModal />}
+     {openDelete &&  <DeleteAccessModal />}
+     {openEdit &&  <EditClientModal />}
     </div>
    }
   />

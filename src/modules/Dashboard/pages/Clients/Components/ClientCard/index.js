@@ -1,9 +1,11 @@
 import { InputSwitch } from 'primereact/inputswitch';
 import { useState } from 'react';
+import { useClients } from '../../../../../../context/ClientsContext';
 
-import ActionsModal from '../Modals/ActionsModal';
+import TreePoints from '../../../../../../images/svg/TreePoints';
 
 const ClientCard = () => {
+ const { setOpenActions } = useClients();
  const [status, setStatus] = useState();
 
  return (
@@ -44,8 +46,16 @@ const ClientCard = () => {
     </div>
 
 
-    <ActionsModal/>
+    <div
+    className='bg-white rounded-md p-2.5 cursor-pointer'
+    onClick={() => {
+        setOpenActions(true);
+    }}
+   >
+    <TreePoints />
    </div>
+   </div>
+   
   </div>
  );
 };

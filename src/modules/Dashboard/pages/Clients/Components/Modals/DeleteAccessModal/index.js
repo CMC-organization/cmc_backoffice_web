@@ -2,7 +2,7 @@ import { useClients } from '../../../../../../../context/ClientsContext';
 import XClose from '../../../../../../../images/svg/XClose';
 
 const DeleteAccessModal = () => {
- const { openDelete, setOpenDelete, setOpenActions } = useClients();
+ const { setOpenDelete } = useClients();
 
  const onCloseModal = (e) => {
   if (e.target.id === 'modalContainer') {
@@ -11,17 +11,6 @@ const DeleteAccessModal = () => {
  };
 
  return (
-  <div className='flex flex-col gap-3'>
-   <div
-    className='border border-gray-200 bg-white rounded-md p-2.5 cursor-pointer'
-    onClick={() => {
-        setOpenDelete(true);
-        setOpenActions(false);
-    }}
-   >
-    Excluir acesso cliente 
-   </div>
-   {openDelete && (
     <div className='w-screen h-screen flex items-center justify-center fixed bg-modal  top-0 left-0 z-20' id='modalContainer' onClick={onCloseModal}>
      <div className='w-[585px] min-h-80 bg-offWhite rounded-3xl  z-20 px-6 py-6  drop-shadow-md shadow-slate-700'>
        <div className='flex items-center justify-between'>
@@ -41,9 +30,7 @@ const DeleteAccessModal = () => {
        <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
      </div>
     </div>
-   )}
-  </div>
- );
+   )
 };
 
 export default DeleteAccessModal;
