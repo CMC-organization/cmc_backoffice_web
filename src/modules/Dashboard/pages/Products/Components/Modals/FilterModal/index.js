@@ -1,7 +1,4 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Dropdown } from 'primereact/dropdown';
-import { Slider } from 'primereact/slider';
 
 import Filter from '../../../../../../../images/svg/Filter';
 

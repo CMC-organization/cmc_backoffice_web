@@ -12,10 +12,7 @@ const EditDeleteModal = () => {
 
  const onSubmit = () => {};
 
- const {
-  handleSubmit,
-  formState: { errors },
- } = useForm();
+ const { handleSubmit } = useForm();
 
  const onCloseModal = (e) => {
   if (e.target.id === 'modalContainer') {
