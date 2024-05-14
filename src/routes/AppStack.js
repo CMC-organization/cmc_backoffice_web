@@ -28,13 +28,13 @@ const AppStack = () => {
  return (
   <Router>
    <Routes>
-    {/* <Route path='/login' element={<Login />} /> */}
+    <Route path='/login' element={<Login />} />
     <Route path='/orders' element={<Orders />} />
     <Route path='/products' element={<Products />} />
     <Route path='/products/create' element={<CreateProducts />} />
     <Route path='/products/edit' element={<EditProduct />} />
     <Route path='/access' element={<Access />} />
-    {/* <Route path='*' element={<Navigate to='/login' />} /> */}
+    <Route path='*' element={<Navigate to='/login' />} />
    </Routes>
   </Router>
  );

@@ -4,11 +4,12 @@ import { useAccess } from '../../../../context/AccessContext';
 import SidebarLayout from '../../../../layouts/Desktop/SidebarLayout';
 import DeleteModal from './Components/Modals/DeleteModal';
 import EditDeleteModal from './Components/Modals/EditDeleteModal';
+import UserModal from './Components/Modals/UserModal';
 import SearchBar from './Components/SearchBar';
 import UserCard from './Components/UserCard';
 
 const Access = () => {
- const { openEditDelete, openDelete } = useAccess();
+ const { openEditDelete, openDelete, openUser, setOpenUser } = useAccess();
 
  return (
   <SidebarLayout
@@ -25,7 +26,9 @@ const Access = () => {
         textColor={'text-white'}
         backgroundColor='bg-primar'
         type='submit'
-        onClick={() => {}}
+        onClick={() => {
+         setOpenUser(true);
+        }}
        />
       </div>
      </div>
@@ -41,6 +44,7 @@ const Access = () => {
      </div>
      {openEditDelete && <EditDeleteModal />}
      {openDelete && <DeleteModal />}
+     {openUser && <UserModal />}
     </div>
    }
   />

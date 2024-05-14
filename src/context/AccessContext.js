@@ -4,6 +4,7 @@ export const AccessContext = createContext({});
 export const AccessProvider = ({ children }) => {
  const [openEditDelete, setOpenEditDelete] = useState(false);
  const [openDelete, setOpenDelete] = useState(false);
+ const [openUser, setOpenUser] = useState(false);
 
  return (
   <AccessContext.Provider
@@ -12,6 +13,8 @@ export const AccessProvider = ({ children }) => {
     setOpenEditDelete,
     openDelete,
     setOpenDelete,
+    openUser,
+    setOpenUser,
    }}
   >
    {children}

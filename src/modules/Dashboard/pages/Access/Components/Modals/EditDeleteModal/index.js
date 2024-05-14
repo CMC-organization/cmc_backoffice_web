@@ -5,13 +5,12 @@ import XClose from '../../../../../../../images/svg/XClose';
 import { useAccess } from '../../../../../../../context/AccessContext';
 
 const EditDeleteModal = () => {
- const { setOpenEditDelete, setOpenDelete } = useAccess();
+ const { setOpenEditDelete, setOpenDelete, setOpenUser } = useAccess();
 
  const postFilter = () => {};
 
  const {
   handleSubmit,
-  register,
   formState: { errors },
  } = useForm();
 
@@ -41,8 +40,14 @@ const EditDeleteModal = () => {
       </div>
       <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
       <div>
-       <div className='w-full flex justify-center cursor-pointer'>
-        <p className='text-lg text-black font-medium'>Editar produto</p>
+       <div
+        className='w-full flex justify-center cursor-pointer'
+        onClick={() => {
+         setOpenEditDelete(false);
+         setOpenUser(true);
+        }}
+       >
+        <p className='text-lg text-black font-medium'>Editar usuário</p>
        </div>
        <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
        <div
@@ -52,7 +57,7 @@ const EditDeleteModal = () => {
          setOpenDelete(true);
         }}
        >
-        <p className='text-lg text-primar font-medium'>Excluir produto</p>
+        <p className='text-lg text-primar font-medium'>Excluir usuário</p>
        </div>
       </div>
      </form>
