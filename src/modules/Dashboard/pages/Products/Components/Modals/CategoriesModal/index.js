@@ -12,10 +12,10 @@ const CategoriesModal = () => {
  const postFilter = () => {};
 
  const {
-  handleSubmit,
-  register,
-  formState: { errors },
- } = useForm();
+    handleSubmit,
+    register,
+    formState: { errors },
+   } = useForm();
 
  const onCloseModal = (e) => {
   if (e.target.id === 'modalContainer') {
