@@ -41,7 +41,7 @@ const CreateProducts = () => {
         <p className='text-base text-black font-medium'>Informações do produto</p>
        </div>
        <div className='flex flex-col p-7'>
-        <Input
+       <Input
          label='Nome do produto *'
          error={errors.email}
          placeholder='Insira o nome do produto'

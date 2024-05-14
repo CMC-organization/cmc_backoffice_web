@@ -19,7 +19,7 @@ const Input = ({ label, placeholder, error, mask, disabled, register, registerKe
     autoComplete='off'
    />
   ) : (
-   <input
+    <input
     className={`
       text-sm mb-2 font-medium w-full pl-3 rounded-xl border-1 bg-offWhite
       ${height ? height : 'h-12'}
