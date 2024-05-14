@@ -125,7 +125,9 @@ const CreateProducts = () => {
         <div className='border-b border-border py-3 pl-8'>
          <p className='text-base text-black font-medium'>Variações</p>
         </div>
-        <div className='flex flex-col p-7'></div>
+        <div className='flex flex-col p-7'>
+            
+        </div>
        </div>
       </div>
      </form>
