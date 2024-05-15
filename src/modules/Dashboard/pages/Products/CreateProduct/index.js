@@ -1,14 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useState, useRef } from 'react';
 
 import ArrowLeft from '../../../../../images/svg/ArrowLeft';
+import TrashIcon from '../../../../../images/svg/TrashIcon';
+import CloudIcon from '../../../../../images/svg/CloudIcon';
 
 import SidebarLayout from '../../../../../layouts/Desktop/SidebarLayout';
 import Header from '../../../../../components/Header';
 import Input from '../../../../../components/Input';
-import ImagesProduct from '../Components/ImagesProduct';
 import Button from '../../../../../components/Button';
 import InputSelect from '../../../../../components/InputSelect';
+import ImagesProduct from '../Components/ImagesProduct';
 
 const CreateProducts = () => {
  const {
@@ -18,6 +21,23 @@ const CreateProducts = () => {
  } = useForm();
 
  const navigate = useNavigate();
+ const [images, setImages] = useState([]);
+ const fileInputRef = useRef();
+ const [icon, serIcon] = useState();
+
+ const handleFile = (e) => {
+  const newFile = e.target.files;
+  const newFilesArray = [...images, newFile[0]];
+  setImages(newFilesArray);
+ };
+
+ const handleAddImage = () => {
+  fileInputRef.current.click();
+ };
+
+ const handleIconChange = (event) => {
+  serIcon(event.target.files[0]);
+ };
 
  const onSubmit = (data) => {
   console.log(data);
@@ -88,17 +108,65 @@ const CreateProducts = () => {
         <div className='border-b border-border py-3 pl-8'>
          <p className='text-base text-black font-medium'>Conteúdo do produto</p>
         </div>
-        <div className='flex flex-col p-7'>
-         <div>
-          <ImagesProduct />
-         </div>
+        <div className='p-3 w-full flex flex-nowrap gap-4 overflow-x-auto items-center'>
+         <ImagesProduct images={images} />
+         <button className='bg-primar text-white min-w-8 min-h-8 rounded-full text-2xl' type='button' onClick={handleAddImage}>
+          +
+         </button>
+         <input type='file' name='file' accept='image/png, image/jpeg, image/webp' ref={fileInputRef} onChange={handleFile} className='hidden' />
         </div>
        </div>
        <div className='w-full border border-border rounded-xl'>
         <div className='border-b border-border py-3 pl-8'>
          <p className='text-base text-black font-medium'>Variações</p>
         </div>
-        <div className='flex flex-col p-7'></div>
+
+        <div className='px-4 py-2'>
+         <div className='flex border-b'>
+          <div className='flex items-start pr-4 pt-7'>
+           <span className='bg-primar rounded-full px-3 py-2 text-white font-medium text-xl'>1</span>
+          </div>
+          <div>
+           <div className='flex gap-3'>
+            <Input
+             label='Nome da variavel'
+             error={errors.variable}
+             placeholder='Insira o nome do variavel'
+             registerKey={'variable'}
+             register={register}
+            />
+            <button className='pb-2'>
+             <TrashIcon />
+            </button>
+           </div>
+
+           <div className='pb-4'>
+            <label htmlFor='icon' className='cursor-pointer rounded-full overflow-hidden h-11 w-full border-2 border-dashed flex justify-center'>
+             {icon ? (
+              <img alt='icone do produto' className='w-full h-full object-fill' src={URL.createObjectURL(icon)} />
+             ) : (
+              <div className='flex items-center text-sm font-medium'>
+               <CloudIcon className='mx-3 my-2' />
+               <span>Upload do icone</span>
+              </div>
+             )}
+            </label>
+            <input type='file' name='icon' id='icon' className='hidden' onChange={handleIconChange} />
+           </div>
+
+           <div className='flex gap-4'>
+            <Input label='Opção' error={errors.option} placeholder='Insira o nome' registerKey={'option'} register={register} />
+            <Input label='Valor adicional' error={errors.value} placeholder='0,00' registerKey={'value'} register={register} />
+           </div>
+           <button className='pb-3' type='button'>
+            <span className='text-primar font-medium text-base'>+ Adicionar opção</span>
+           </button>
+          </div>
+         </div>
+         <button className='py-3' type='button'>
+          <span className='text-primar font-medium text-base'>+ Adicionar nova variavel</span>
+         </button>
+        </div>
        </div>
       </div>
      </form>
