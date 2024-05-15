@@ -2,9 +2,8 @@ import { Dropdown } from 'primereact/dropdown';
 import { Controller } from 'react-hook-form';
 
 const InputSelect = ({ label, name, control, placeholder, options, optionLabel }) => (
- <div className='flex flex-col gap-2'>
-  <p className='text-sm font-medium text-black '>{label}</p>
-
+ <div className='w-full flex flex-col items-start'>
+  <p className='text-sm font-medium text-black mb-2'>{label}</p>
   <Controller
    name={name}
    control={control}

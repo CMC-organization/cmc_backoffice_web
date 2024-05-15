@@ -9,91 +9,83 @@ import Products from '../../images/svg/Products';
 import Purchase from '../../images/svg/Purchase';
 import { cn } from '../../Utils/cn';
 
-
 const Sidebar = () => {
-  const location = useLocation();
+ const location = useLocation();
  const navigate = useNavigate();
 
  const logout = () => {
-  navigate('/')
-}
+  navigate('/');
+ };
 
  return (
   <div className='flex flex-col items-start py-12 w-full'>
-  
-    <div className='mb-11'>
-      <Logo width={138} />
-    </div>
+   <div className='mb-11'>
+    <Logo width={138} />
+   </div>
 
-    <div className='flex flex-col gap-3'>
-      <Link
-        to="/orders"
-        className={cn(
-          'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
-          location.pathname.includes('orders') &&
-            'text-primar bg-red4',
-        )}
-      >
-        <Cart color='currentColor' />
-        <span className="ms-3">Pedidos</span>
-      </Link>
+   <div className='flex flex-col gap-3'>
+    <Link
+     to='/orders'
+     className={cn(
+      'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+      location.pathname.includes('orders') && 'text-primar bg-red4',
+     )}
+    >
+     <Cart color='currentColor' />
+     <span className='ms-3'>Pedidos</span>
+    </Link>
 
-      <Link
-        to="/products"
-        className={cn(
-          'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
-          location.pathname.includes('products') &&
-            'text-primar bg-red4',
-        )}
-      >
-        <Products color='currentColor' />
-        <span className="ms-3">Produtos</span>
-      </Link>
+    <Link
+     to='/products'
+     className={cn(
+      'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+      location.pathname.includes('products') && 'text-primar bg-red4',
+     )}
+    >
+     <Products color='currentColor' />
+     <span className='ms-3'>Produtos</span>
+    </Link>
 
-      <Link
-        to="/clients"
-        className={cn(
-          'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
-          location.pathname.includes('clients') &&
-            'text-primar bg-red4',
-        )}
-      >
-        <Clients color='currentColor' />
-        <span className="ms-3">Clientes</span>
-      </Link>
+    <Link
+     to='/clients'
+     className={cn(
+      'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+      location.pathname.includes('clients') && 'text-primar bg-red4',
+     )}
+    >
+     <Clients color='currentColor' />
+     <span className='ms-3'>Clientes</span>
+    </Link>
 
-      <Link
-        to="/purchases"
-        className={cn(
-          'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
-          location.pathname.includes('purchases') &&
-            'text-primar bg-red4',
-        )}
-      >
-        <Purchase color='currentColor' />
-        <span className="ms-3">Compras & Estoque</span>
-      </Link>
+    <Link
+     to='/purchases'
+     className={cn(
+      'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+      location.pathname.includes('purchases') && 'text-primar bg-red4',
+     )}
+    >
+     <Purchase color='currentColor' />
+     <span className='ms-3'>Compras & Estoque</span>
+    </Link>
 
-      <Link
-        to="/access"
-        className={cn(
-          'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
-          location.pathname.includes('access') &&
-            'text-primar bg-red4',
-        )}
-      >
-        <Access color='currentColor' />
-        <span className="ms-3">Acesso</span>
-      </Link>
-    </div>
+    <Link
+     to='/access'
+     className={cn(
+      'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+      location.pathname.includes('access') && 'text-primar bg-red4',
+     )}
+    >
+     <Access color='currentColor' />
+     <span className='ms-3'>Acesso</span>
+    </Link>
+   </div>
 
-    <button 
-      onClick={logout}
-      className='flex items-center gap-3 py-2 absolute bottom-[100px] cursor-pointer'>
-      <Exit />
-      <p>Sair</p>
-    </button>
+   <button onClick={logout} className='flex items-center gap-3 py-2 absolute bottom-[100px] cursor-pointer'>
+    <Exit />
+    <p>Sair</p>
+   </button>
   </div>
-)};
+ );
+};
 
 export default Sidebar;

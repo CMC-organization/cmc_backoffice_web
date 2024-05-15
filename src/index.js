@@ -8,6 +8,7 @@ import { PrimeReactProvider } from 'primereact/api';
 import { GlobalProvider } from './context/GlobalContext';
 import { OrdersProvider } from './context/OrdersContext';
 import { ProductsProvider } from './context/ProductsContext';
+import { AccessProvider } from './context/AccessContext';
 import { ClientsProvider } from './context/ClientsContext';
 import { PurchaseProvider } from './context/PurchasesContext';
 import './index.css';
@@ -21,14 +22,16 @@ root.render(
   <GlobalProvider>
    <OrdersProvider>
     <ProductsProvider>
-    <ClientsProvider>
-    <PurchaseProvider>
-     <PrimeReactProvider>
-      <ToastContainer />
-      <AppStack />
-     </PrimeReactProvider>
+     <PurchaseProvider>
+      <AccessProvider>
+       <ClientsProvider>
+        <PrimeReactProvider>
+         <ToastContainer />
+         <AppStack />
+        </PrimeReactProvider>
+       </ClientsProvider>
+      </AccessProvider>
      </PurchaseProvider>
-     </ClientsProvider>
     </ProductsProvider>
    </OrdersProvider>
   </GlobalProvider>
