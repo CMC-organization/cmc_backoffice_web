@@ -27,7 +27,7 @@ const InputPassword = ({ label, name, control, rules, placeholder, error, regist
        disabled={disabled}
        autoComplete='off'
        className={`
-         text-base font-regularc w-full pl-3 rounded-xl pr-10 border-1
+       text-sm mb-2 font-medium w-full pl-3 rounded-xl pr-10 border-1
          ${height ? height : 'h-12'} 
          ${error ? 'border-red1' : 'border-border'}
          bg-offWhite
