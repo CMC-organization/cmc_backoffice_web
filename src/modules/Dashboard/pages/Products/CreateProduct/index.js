@@ -22,7 +22,6 @@ const CreateProducts = () => {
  const navigate = useNavigate();
  const [images, setImages] = useState([])
  const fileInputRef = useRef()
- const [variables, setVariables] = useState([])
  const [icon, serIcon] = useState()
 
  const handleFile = (e) => {
