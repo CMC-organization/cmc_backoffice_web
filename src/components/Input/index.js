@@ -9,7 +9,7 @@ const Input = ({ label, name, control, rules, placeholder, error, mask, disabled
    <Controller
     name={name}
     control={control}
-    rules={{ rules }}
+    rules={ rules }
     render={({ field }) => (
      <InputMask
       id={field.name}
@@ -31,7 +31,7 @@ const Input = ({ label, name, control, rules, placeholder, error, mask, disabled
    <Controller
     name={name}
     control={control}
-    rules={{ rules }}
+    rules={ rules }
     render={({ field }) => (
      <input
       id={field.name}

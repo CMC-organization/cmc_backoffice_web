@@ -19,7 +19,12 @@ const Login = () => {
   handleSubmit,
   control,
   formState: { errors },
- } = useForm();
+ } = useForm({
+    defaultValues: {
+        email: '',
+        password: '',
+        },
+ });
 
  const postLogin = (data) => {};
 

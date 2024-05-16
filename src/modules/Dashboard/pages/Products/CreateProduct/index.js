@@ -1,29 +1,49 @@
+import { useRef, useState } from 'react';
+import { useForm, useFieldArray } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { useState, useRef } from 'react';
 
 import ArrowLeft from '../../../../../images/svg/ArrowLeft';
-import TrashIcon from '../../../../../images/svg/TrashIcon';
 import CloudIcon from '../../../../../images/svg/CloudIcon';
+import TrashIcon from '../../../../../images/svg/TrashIcon';
 
-import SidebarLayout from '../../../../../layouts/Desktop/SidebarLayout';
+import Button from '../../../../../components/Button';
 import Header from '../../../../../components/Header';
 import Input from '../../../../../components/Input';
-import Button from '../../../../../components/Button';
 import InputSelect from '../../../../../components/InputSelect';
+import SidebarLayout from '../../../../../layouts/Desktop/SidebarLayout';
 import ImagesProduct from '../Components/ImagesProduct';
+
+const categories = [
+  { name: 'Joao', code: 'Joao' },
+  { name: 'Gustavo', code: 'Gustavo' },
+ ];
 
 const CreateProducts = () => {
  const {
   handleSubmit,
   control,
   formState: { errors },
- } = useForm();
+  watch,
+ } = useForm({
+  defaultValues: {
+    name: '',
+    description: '',
+    categories: '',
+    sku: '',
+    stock: '',
+    minimun: '',
+    weigth: '',
+    value: '',
+    }
+  }
+ );
 
  const navigate = useNavigate();
+ const { fields, append, remove } = useFieldArray({ control, name: "variables" });
+
  const [images, setImages] = useState([]);
  const fileInputRef = useRef();
- const [icon, serIcon] = useState();
+ const [icons, setIcons] = useState([]);
 
  const handleFile = (e) => {
   const newFile = e.target.files;
@@ -35,23 +55,33 @@ const CreateProducts = () => {
   fileInputRef.current.click();
  };
 
- const handleIconChange = (event) => {
-  serIcon(event.target.files[0]);
- };
+ const handleIconChange = (event, index) => {
+  const files = [...icons];
+  files[index] = event.target.files[0];
+  setIcons(files);
+};
 
- const onSubmit = (data) => {
+const handleAddVariable = () => {
+  append({ variable: "", icon: "", option: "", value: "" });
+};
+
+watch("variables");
+
+const handleRemoveVariable = (index) => {
+  remove(index);
+  const files = [...icons];
+  files.splice(index, 1);
+  setIcons(files);
+};
+
+const onSubmit = (data) => {
   console.log(data);
  };
-
- const categories = [
-  { name: 'Joao', code: 'Joao' },
-  { name: 'Gustavo', code: 'Gustavo' },
- ];
 
  return (
   <SidebarLayout
    content={
-    <div className='flex flex-col gap-10 pb-10'>
+    <form  onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-10 pb-10'>
      <div className='flex items-center gap-9'>
       <div
        onClick={() => {
@@ -63,10 +93,10 @@ const CreateProducts = () => {
       </div>
       <Header page='Criar produto' name='Teste' />
      </div>
-     <form onSubmit={handleSubmit(onSubmit)} className='flex gap-9'>
+     <div className='flex gap-9'>
       <div className='w-1/2 h-full border border-border rounded-xl'>
        <div className='border-b border-border py-3 pl-8'>
-        <p className='text-base text-black font-medium'>Informações do produto</p>
+        <p className='text-base text-black font-medium'>Indivações do produto</p>
        </div>
        <div className='flex flex-col p-7'>
         <Input
@@ -116,62 +146,70 @@ const CreateProducts = () => {
          <input type='file' name='file' accept='image/png, image/jpeg, image/webp' ref={fileInputRef} onChange={handleFile} className='hidden' />
         </div>
        </div>
+
+
        <div className='w-full border border-border rounded-xl'>
         <div className='border-b border-border py-3 pl-8'>
          <p className='text-base text-black font-medium'>Variações</p>
         </div>
-
-        <div className='px-4 py-2'>
-         <div className='flex border-b'>
-          <div className='flex items-start pr-4 pt-7'>
-           <span className='bg-primar rounded-full px-3 py-2 text-white font-medium text-xl'>1</span>
-          </div>
-          <div>
-           <div className='flex gap-3'>
-            <Input
-             label='Nome da variavel'
-             error={errors.variable}
-             placeholder='Insira o nome do variavel'
-             registerKey={'variable'}
-             register={register}
-            />
-            <button className='pb-2'>
-             <TrashIcon />
-            </button>
-           </div>
-
-           <div className='pb-4'>
-            <label htmlFor='icon' className='cursor-pointer rounded-full overflow-hidden h-11 w-full border-2 border-dashed flex justify-center'>
-             {icon ? (
-              <img alt='icone do produto' className='w-full h-full object-fill' src={URL.createObjectURL(icon)} />
-             ) : (
-              <div className='flex items-center text-sm font-medium'>
-               <CloudIcon className='mx-3 my-2' />
-               <span>Upload do icone</span>
+        <div className='px-4 overflow-auto h-96'>
+          {fields.map((field, index) => (
+            <div key={field.id} className='flex border-b py-4'>
+              <div className='flex items-start pr-4 pt-7'>
+                <span className='bg-primar rounded-full px-3 py-2 text-white font-medium text-xl'>{index+1}</span>
               </div>
-             )}
-            </label>
-            <input type='file' name='icon' id='icon' className='hidden' onChange={handleIconChange} />
-           </div>
 
-           <div className='flex gap-4'>
-            <Input label='Opção' error={errors.option} placeholder='Insira o nome' registerKey={'option'} register={register} />
-            <Input label='Valor adicional' error={errors.value} placeholder='0,00' registerKey={'value'} register={register} />
-           </div>
-           <button className='pb-3' type='button'>
-            <span className='text-primar font-medium text-base'>+ Adicionar opção</span>
-           </button>
-          </div>
-         </div>
-         <button className='py-3' type='button'>
-          <span className='text-primar font-medium text-base'>+ Adicionar nova variavel</span>
-         </button>
+              <div>
+                <div className='flex gap-3'>
+                  <Input
+                    label='Nome da variavel'
+                    name={`variables[${index}].variable`}
+                    control={control}
+                    placeholder='Insira o nome do variavel'
+                    rules={{
+                      required: 'Campo obrigatório!',
+                    }}
+                    error={errors.variables && errors.variables[index] && errors.variables[index].variable}
+                  />
+                  <button className='pb-2' onClick={() => handleRemoveVariable(index)}>
+                    <TrashIcon />
+                  </button>
+                </div>
+
+                <div className='pb-4'>
+                  <label htmlFor={`icon${index}`} className='cursor-pointer rounded-full overflow-hidden h-11 w-full border-2 border-dashed flex justify-center'>
+                    {icons[index] ? (
+                    <img alt='icone do produto' className='w-full h-full object-fill' src={URL.createObjectURL(icons[index])} />
+                    ) : (
+                    <div className='flex items-center text-sm font-medium'>
+                      <CloudIcon className='mx-3 my-2' />
+                      <span>Upload do icone</span>
+                    </div>
+                    )}
+                  </label>
+                  <input type='file' name={`variables[${index}].icon`} id={`icon${index}`} className='hidden' onChange={(event) => handleIconChange(event, index)} />
+                </div>
+
+                <div className='flex gap-4'>
+                  <Input name={`variables[${index}].option`} label='Opção' error={errors.variables && errors.variables[index] && errors.variables[index].option} placeholder='Insira o nome' control={control} />
+                  <Input name={`variables[${index}].value`} label='Valor adicional' error={errors.variables && errors.variables[index] && errors.variables[index].value} placeholder='0,00' control={control} />
+                </div>
+                <button className='pb-3' type='button'>
+                  <span className='text-primar font-medium text-base'>+ Adicionar opção</span>
+                </button>
+              </div>
+            </div>
+          ))}
+          <button className='py-3' type='button' onClick={handleAddVariable}>
+              <span className='text-primar font-medium text-base'>+ Adicionar nova variavel</span>
+          </button>
         </div>
        </div>
       </div>
-     </form>
+     </div>
      <div className='w-full flex flex-col items-end'>
       <Button
+       type={'submit'}
        name='Criar produto'
        width={'w-48'}
        height={'h-10'}
@@ -181,7 +219,7 @@ const CreateProducts = () => {
        onClick={() => {}}
       />
      </div>
-    </div>
+    </form>
    }
   />
  );

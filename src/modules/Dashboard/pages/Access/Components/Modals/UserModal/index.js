@@ -19,7 +19,14 @@ const UserModal = () => {
   handleSubmit,
   control,
   formState: { errors },
- } = useForm();
+ } = useForm({
+    defaultValues: {
+        name: '',
+        email: '',
+        password: '',
+        permissions: '',
+    },
+ });
 
  const onSubmit = (data) => {
   console.log(data);
