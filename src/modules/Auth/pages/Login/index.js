@@ -17,9 +17,14 @@ const Login = () => {
 
  const {
   handleSubmit,
-  register,
+  control,
   formState: { errors },
- } = useForm();
+ } = useForm({
+    defaultValues: {
+        email: '',
+        password: '',
+        },
+ });
 
  const postLogin = (data) => {};
 
@@ -39,41 +44,32 @@ const Login = () => {
        <form onSubmit={handleSubmit(postLogin)} className='flex flex-col items-center'>
         <Input
          label='E-mail'
-         placeholder='Insira seu e-mail'
-         registerKey={'email'}
-         register={register}
-         error={errors.email}
-         validate={{
+         name='email'
+         control={control}
+         placeholder='Insira o e-mail'
+         rules={{
           required: 'Campo obrigatório!',
           pattern: {
            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
            message: 'E-mail inválido!',
           },
          }}
+         error={errors.email}
         />
-
         <InputPassword
          label='Senha'
-         placeholder='8+ Caracteres'
-         registerKey={'password'}
-         register={register}
-         error={errors.password}
-         validate={{
+         name='password'
+         control={control}
+         placeholder='Iinsira uma senha'
+         rules={{
           required: 'Campo obrigatório!',
           minLength: {
            value: 8,
            message: 'Mínimo 8 caracteres!',
           },
          }}
+         error={errors.password}
         />
-
-        <input type='checkbox' {...register('terms')} />
-
-        <div className='w-full pt-2'>
-         <p className='font-regularc text-font text-right' onClick={() => navigate('/lostpassword')}>
-          Esqueceu a senha?
-         </p>
-        </div>
 
         <div className='w-full pt-12'>
          <Button name='Login' width={'w-full'} height={'h-12'} textColor={'text-white'} backgroundColor={'bg-blue1'} type='submit' />
@@ -100,36 +96,45 @@ const Login = () => {
       <form onSubmit={handleSubmit(postLogin)} className='flex flex-col'>
        <Input
         label='E-mail'
-        error={errors.email}
-        placeholder='Insira seu e-mail'
-        validate={{
+        name='email'
+        control={control}
+        placeholder='Insira o e-mail'
+        rules={{
          required: 'Campo obrigatório!',
          pattern: {
           value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
           message: 'E-mail inválido!',
          },
         }}
-        registerKey={'email'}
-        register={register}
+        error={errors.email}
        />
-
        <InputPassword
         label='Senha'
-        placeholder='Insira sua senha'
-        validate={{
+        name='password'
+        control={control}
+        placeholder='Iinsira uma senha'
+        rules={{
          required: 'Campo obrigatório!',
          minLength: {
           value: 8,
           message: 'Mínimo 8 caracteres!',
          },
         }}
-        registerKey={'password'}
-        register={register}
         error={errors.password}
        />
 
        <div className='flex justify-between pt-4'>
-        <Button name='Entrar' width='w-100' height={'h-12'} textColor={'text-white'} backgroundColor='bg-primar' type='submit' />
+        <Button
+         name='Entrar'
+         width='w-100'
+         height={'h-12'}
+         textColor={'text-white'}
+         backgroundColor='bg-primar'
+         type='submit'
+         onClick={() => {
+          navigate('/orders');
+         }}
+        />
        </div>
       </form>
      </div>

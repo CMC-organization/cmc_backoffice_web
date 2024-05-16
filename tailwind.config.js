@@ -33,6 +33,8 @@ module.exports = {
     red1: '#ff3b25',
     red2: '#d31e13',
     red3: '#a60000',
+    red4: '#FFF2F4',
+    red5: '#EA0000',
 
     blue1: '#026ae3',
     blue2: '#014cbd',

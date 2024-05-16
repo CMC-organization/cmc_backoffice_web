@@ -7,33 +7,22 @@ import { useOrders } from '../../../../../../../context/OrdersContext';
 import Button from '../../../../../../../components/Button';
 import InputSelect from '../../../../../../../components/InputSelect';
 import InputCalendar from '../../../../../../../components/InputCalendar';
+import InputSlider from '../../../../../../../components/InputSlider';
 
 const FilterModal = () => {
- const { openFilter, setOpenFilter, value, setValue, maxPrice, setMaxPrice, minPrice, setMinPrice } = useOrders();
+ const { openFilter, setOpenFilter, maxPrice, setMaxPrice, minPrice, setMinPrice } = useOrders();
 
- const { handleSubmit, register, control } = useForm();
+ const { handleSubmit, control } = useForm({
+    defaultValues: {
+        date: '',
+        clients: '',
+        status: '',
+        price: [0, 1000],
+    },
+ });
 
  const onSubmit = (data) => {
   console.log(data);
- };
-
- const handlePrices = (value) => {
-  const [proposedMin, proposedMax] = value;
-  const minRange = 20;
-
-  if (proposedMin > maxPrice - minRange) {
-   setValue([maxPrice - minRange, maxPrice]);
-   setMinPrice(maxPrice - minRange);
-   setMaxPrice(maxPrice);
-  } else if (proposedMax < minPrice + minRange) {
-   setValue([minPrice, minPrice + minRange]);
-   setMinPrice(minPrice);
-   setMaxPrice(minPrice + minRange);
-  } else {
-   setValue(value);
-   setMaxPrice(value[1]);
-   setMinPrice(value[0]);
-  }
  };
 
  const clients = [
@@ -84,18 +73,8 @@ const FilterModal = () => {
 
        <InputSelect label='Status' name='status' control={control} placeholder='Selecione' options={status} optionLabel={'name'} />
 
-       <div className='flex flex-col gap-4'>
-        <div className='flex flex-col gap-3'>
-         <p className='text-sm font-medium text-black '>Preço</p>
-         <div className='card flex justify-content-center'>
-          <Slider value={value} onChange={(e) => handlePrices(e.value)} className='w-14rem bg-gray-300' range />
-         </div>
-        </div>
-        <div className='flex flex-row gap-4 justify-between'>
-         <input type='text' disabled value={`R$ ${minPrice},00`} className='border-2 rounded-4 p-2 w-1/2 bg-white' />
-         <input type='text' disabled value={`R$ ${maxPrice},00`} className='border-2 rounded-4 p-2 w-1/2 bg-white' />
-        </div>
-       </div>
+       <InputSlider label='Preço' name='price' control={control} />
+
        <Button name='Salvar filtros' width='w-100' height={'h-12'} textColor={'text-white'} backgroundColor='bg-primar' type='submit' />
       </form>
      </div>

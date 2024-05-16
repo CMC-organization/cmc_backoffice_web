@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import XClose from '../../../../../../../images/svg/XClose';
@@ -5,15 +6,13 @@ import XClose from '../../../../../../../images/svg/XClose';
 import { useProducts } from '../../../../../../../context/ProductsContext';
 
 const EditDeleteModal = () => {
+ const navigate = useNavigate();
+
  const { setOpenEditDelete, setOpenDelete } = useProducts();
 
- const postFilter = () => {};
+ const onSubmit = () => {};
 
- const {
-  handleSubmit,
-  register,
-  formState: { errors },
- } = useForm();
+ const { handleSubmit } = useForm();
 
  const onCloseModal = (e) => {
   if (e.target.id === 'modalContainer') {
@@ -25,7 +24,7 @@ const EditDeleteModal = () => {
   <>
    <div className='w-screen h-screen flex items-center justify-center fixed bg-modal  top-0 left-0 z-20' id='modalContainer' onClick={onCloseModal}>
     <div className='w-96 min-h-80 bg-offWhite rounded  z-20 px-6 py-6  drop-shadow-md shadow-slate-700'>
-     <form onSubmit={handleSubmit(postFilter)}>
+     <form onSubmit={handleSubmit(onSubmit)}>
       <div className='flex items-center justify-between'>
        <div className='flex items-center gap-3'>
         <p className='text-lg text-black font-medium'>Ações</p>
@@ -41,7 +40,13 @@ const EditDeleteModal = () => {
       </div>
       <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
       <div>
-       <div className='w-full flex justify-center cursor-pointer'>
+       <div
+        className='w-full flex justify-center cursor-pointer'
+        onClick={() => {
+         setOpenEditDelete(false);
+         navigate('/products/create');
+        }}
+       >
         <p className='text-lg text-black font-medium'>Editar produto</p>
        </div>
        <div className='min-w-full min-h-[0.5px] my-3 bg-border' />

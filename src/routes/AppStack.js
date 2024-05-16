@@ -8,6 +8,9 @@ import Orders from '../modules/Dashboard/pages/Orders';
 import Products from '../modules/Dashboard/pages/Products';
 import CreateProducts from '../modules/Dashboard/pages/Products/CreateProduct';
 import EditProduct from '../modules/Dashboard/pages/Products/EditProduct';
+import Access from '../modules/Dashboard/pages/Access';
+import Clients from '../modules/Dashboard/pages/Clients';
+import Purchases from '../modules/Dashboard/pages/Purchases';
 
 /* DASHBOARD */
 
@@ -27,12 +30,15 @@ const AppStack = () => {
  return (
   <Router>
    <Routes>
-    {/* <Route path='/login' element={<Login />} /> */}
+    <Route path='/login' element={<Login />} />
     <Route path='/orders' element={<Orders />} />
     <Route path='/products' element={<Products />} />
     <Route path='/products/create' element={<CreateProducts />} />
     <Route path='/products/edit' element={<EditProduct />} />
-    {/* <Route path='*' element={<Navigate to='/login' />} /> */}
+    <Route path='/access' element={<Access />} />
+    <Route path='/clients' element={<Clients />} />
+    <Route path='/purchases' element={<Purchases />} />
+    <Route path='*' element={<Navigate to='/login' />} />
    </Routes>
   </Router>
  );
