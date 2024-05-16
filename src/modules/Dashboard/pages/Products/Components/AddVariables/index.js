@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 
 import Input from "../../../../../../components/Input"
 import CloudIcon from "../../../../../../images/svg/CloudIcon"
 import TrashIcon from "../../../../../../images/svg/TrashIcon"
 
-const AddVariables = ({ getVariables }) => {
+const AddVariables = () => {
     const { control, formState: { errors }, watch } = useForm();
     const { fields, append, remove } = useFieldArray({ control, name: "variables" });
     const [icons, setIcons] = useState([]);
@@ -21,10 +21,6 @@ const AddVariables = ({ getVariables }) => {
     };
 
     watch("variables");
-
-    useEffect(() => {
-        getVariables(fields);
-    }, [fields, getVariables]);
 
     const handleRemoveVariable = (index) => {
         remove(index);
