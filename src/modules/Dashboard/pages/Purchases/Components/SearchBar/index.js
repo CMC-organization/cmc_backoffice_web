@@ -12,8 +12,8 @@ const SearchBar = () => {
     <input placeholder='Pesquisar' className='text-gray-900 text-sm w-full outline-none' />
    </div>
    <FilterModal />
-   <CategoriesModal />
-   <AddSupplierModal />
+   {/* <CategoriesModal />
+   <AddSupplierModal /> */}
   </div>
  );
 };
