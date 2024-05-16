@@ -38,44 +38,39 @@ const CreateProducts = () => {
   }
  );
 
- const navigate = useNavigate();
  const { fields, append, remove } = useFieldArray({ control, name: "variables" });
-
- const [images, setImages] = useState([]);
+ const navigate = useNavigate();
  const fileInputRef = useRef();
+ const [images, setImages] = useState([]);
  const [icons, setIcons] = useState([]);
 
  const handleFile = (e) => {
   const newFile = e.target.files;
-  const newFilesArray = [...images, newFile[0]];
-  setImages(newFilesArray);
+  setImages([...images, newFile[0]]);
  };
 
- const handleAddImage = () => {
-  fileInputRef.current.click();
- };
-
- const handleIconChange = (event, index) => {
-  const files = [...icons];
-  files[index] = event.target.files[0];
-  setIcons(files);
+ const handleIconChange = (e, index) => {
+  const allIcons = [...icons];
+  allIcons[index] = e.target.files[0];
+  setIcons(allIcons);
 };
 
 const handleAddVariable = () => {
   append({ variable: "", icon: "", option: "", value: "" });
 };
-
 watch("variables");
 
 const handleRemoveVariable = (index) => {
   remove(index);
-  const files = [...icons];
-  files.splice(index, 1);
-  setIcons(files);
+  const allIcons = [...icons];
+  allIcons.splice(index, 1);
+  setIcons(allIcons);
 };
 
 const onSubmit = (data) => {
   console.log(data);
+  console.log(images);
+  console.log(icons);
  };
 
  return (
@@ -140,7 +135,7 @@ const onSubmit = (data) => {
         </div>
         <div className='p-3 w-full flex flex-nowrap gap-4 overflow-x-auto items-center'>
          <ImagesProduct images={images} />
-         <button className='bg-primar text-white min-w-8 min-h-8 rounded-full text-2xl' type='button' onClick={handleAddImage}>
+         <button className='bg-primar text-white min-w-8 min-h-8 rounded-full text-2xl' type='button' onClick={() =>  fileInputRef.current.click()}>
           +
          </button>
          <input type='file' name='file' accept='image/png, image/jpeg, image/webp' ref={fileInputRef} onChange={handleFile} className='hidden' />
