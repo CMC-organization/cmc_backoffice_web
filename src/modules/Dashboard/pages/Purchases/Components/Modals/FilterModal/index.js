@@ -10,7 +10,15 @@ import { usePurchases } from '../../../../../../../context/PurchasesContext';
 const FilterModal = () => {
  const { openFilter, setOpenFilter, value, setValue, maxPrice, setMaxPrice, minPrice, setMinPrice } = usePurchases();
 
- const { handleSubmit, control, reset } = useForm();
+ const { handleSubmit, control, reset } = useForm({
+    defaultValues: {
+        categorie: '',
+        coupon: '',
+        status: '',
+        price: '',
+        stock: '',  
+    },
+ });
 
  const onSubmit = (data) => {
   console.log(data);

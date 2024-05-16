@@ -12,10 +12,14 @@ import InputSlider from '../../../../../../../components/InputSlider';
 const FilterModal = () => {
  const { openFilter, setOpenFilter, maxPrice, setMaxPrice, minPrice, setMinPrice } = useOrders();
 
- const defaultValues = {
-  price: [0, 1000],
- };
- const { handleSubmit, control } = useForm({ defaultValues });
+ const { handleSubmit, control } = useForm({
+    defaultValues: {
+        date: '',
+        clients: '',
+        status: '',
+        price: [0, 1000],
+    },
+ });
 
  const onSubmit = (data) => {
   console.log(data);

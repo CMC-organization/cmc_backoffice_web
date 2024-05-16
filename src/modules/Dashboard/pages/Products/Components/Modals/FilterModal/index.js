@@ -10,7 +10,15 @@ import InputSlider from '../../../../../../../components/InputSlider';
 const FilterModal = () => {
  const { openFilter, setOpenFilter } = useProducts();
 
- const { handleSubmit, control, reset } = useForm();
+ const { handleSubmit, control, reset } = useForm({
+    defaultValues: {
+        categorie: '',
+        coupon: '',
+        status: '',
+        price: '',
+        stock: '',  
+    },
+ });
 
  const onSubmit = (data) => {
   console.log(data);

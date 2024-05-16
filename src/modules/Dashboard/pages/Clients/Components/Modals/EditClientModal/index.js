@@ -19,7 +19,15 @@ const EditClientModal = () => {
   handleSubmit,
   control,
   formState: { errors },
- } = useForm();
+ } = useForm({
+    defaultValues: {
+        name: '',
+        email: '',
+        credits: '',
+        cnpj: '',
+        password: '',
+        },
+ });
 
  const handleAvatarChange = (event) => {
   setAvatar(event.target.files[0]);

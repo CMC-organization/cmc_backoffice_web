@@ -18,7 +18,15 @@ const PurchaseModal = () => {
   handleSubmit,
   control,
   formState: { errors },
- } = useForm();
+ } = useForm({
+    defaultValues: {
+        supplier: '',
+        product: '',
+        sku: '',
+        quantity: '',
+        value: '',
+    },
+ });
 
  const handleAvatarChange = (event) => {
   setAvatar(event.target.files[0]);

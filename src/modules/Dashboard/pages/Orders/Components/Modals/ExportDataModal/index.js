@@ -10,7 +10,14 @@ import InputCalendar from '../../../../../../../components/InputCalendar';
 const ExportDataModal = () => {
  const { setOpenExport } = useOrders();
 
- const { handleSubmit, control } = useForm();
+ const { handleSubmit, control } = useForm({
+    defaultValues: {
+        client: '',
+        exports: '',
+        files: '',
+        date: '',
+    },
+ });
 
  const onSubmit = (data) => {
   console.log(data);
