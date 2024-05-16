@@ -20,10 +20,10 @@ const Login = () => {
   control,
   formState: { errors },
  } = useForm({
-    defaultValues: {
-        email: '',
-        password: '',
-        },
+  defaultValues: {
+   email: '',
+   password: '',
+  },
  });
 
  const postLogin = (data) => {};
@@ -60,7 +60,7 @@ const Login = () => {
          label='Senha'
          name='password'
          control={control}
-         placeholder='Iinsira uma senha'
+         placeholder='Insira uma senha'
          rules={{
           required: 'Campo obrigatório!',
           minLength: {
@@ -112,7 +112,7 @@ const Login = () => {
         label='Senha'
         name='password'
         control={control}
-        placeholder='Iinsira uma senha'
+        placeholder='Insira uma senha'
         rules={{
          required: 'Campo obrigatório!',
          minLength: {

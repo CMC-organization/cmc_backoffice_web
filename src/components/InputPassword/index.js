@@ -41,7 +41,7 @@ const InputPassword = ({ label, name, control, rules, placeholder, error, regist
    {stateEye ? (
     <div className='relative'>
      <div
-      className={`absolute right-4 ${isSmartphone ? 'bottom-[30px]' : 'bottom-[40px]'} cursor-pointer`}
+      className={`absolute right-4 ${isSmartphone ? 'bottom-[30px]' : 'bottom-[47px]'} cursor-pointer`}
       onClick={() => setStateEye((prevState) => !prevState)}
      >
       <OpenEyeIcon />
@@ -50,7 +50,7 @@ const InputPassword = ({ label, name, control, rules, placeholder, error, regist
    ) : (
     <div className='relative'>
      <div
-      className={`absolute right-4 ${isSmartphone ? 'bottom-[30px]' : 'bottom-[40px]'} cursor-pointer`}
+      className={`absolute right-4 ${isSmartphone ? 'bottom-[30px]' : 'bottom-[47px]'} cursor-pointer`}
       onClick={() => setStateEye((prevState) => !prevState)}
      >
       <CloseEyeIcon />
