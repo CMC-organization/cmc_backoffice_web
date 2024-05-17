@@ -72,15 +72,8 @@ const Login = () => {
         />
 
         <div className='w-full pt-12'>
-         <Button name='Login' width={'w-full'} height={'h-12'} textColor={'text-white'} backgroundColor={'bg-blue1'} type='submit' />
+         <Button name='Login' width={'w-full'} height={'h-12'} textColor={'text-white'} backgroundColor={'bg-primar'} type='submit' />
         </div>
-
-        <p className='font-regularc text-font text-left text-label pt-4 text-colors-50'>
-         Não é cadastrado?
-         <span onClick={navigate('/register')} className='text-blue1 cursor-pointer'>
-          Cadastre-se
-         </span>
-        </p>
        </form>
       </>
      }

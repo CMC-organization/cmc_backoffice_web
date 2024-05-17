@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter as Router, Navigate } from 'react-router-dom';
 import { addLocale } from 'primereact/api';
+import { useMediaQuery } from 'react-responsive';
 
 /* AUTH */
 import Login from '../modules/Auth/pages/Login';
@@ -15,6 +16,7 @@ import Purchases from '../modules/Dashboard/pages/Purchases';
 /* DASHBOARD */
 
 const AppStack = () => {
+ const isSmartphone = useMediaQuery({ maxWidth: 1024 });
  addLocale('pt', {
   firstDayOfWeek: 0,
   showMonthAfterYear: true,
@@ -27,7 +29,9 @@ const AppStack = () => {
   clear: 'Limpar',
  });
 
- return (
+ return isSmartphone ? (
+  <></>
+ ) : (
   <Router>
    <Routes>
     <Route path='/login' element={<Login />} />
