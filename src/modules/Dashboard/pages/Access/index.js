@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '../../../../components/Button';
 import Header from '../../../../components/Header';
 import { useAccess } from '../../../../context/AccessContext';
@@ -6,10 +7,14 @@ import DeleteModal from './Components/Modals/DeleteModal';
 import EditDeleteModal from './Components/Modals/EditDeleteModal';
 import UserModal from './Components/Modals/UserModal';
 import SearchBar from './Components/SearchBar';
+import SwitchUsers from './Components/SwitchUsers';
 import UserCard from './Components/UserCard';
 
 const Access = () => {
  const { openEditDelete, openDelete, openUser, setOpenUser } = useAccess();
+
+ const [adm, setAdm] = useState(true);
+ const [op, setOp] = useState(false);
 
  return (
   <SidebarLayout
@@ -17,8 +22,9 @@ const Access = () => {
     <div className='w-full flex flex-col gap-9'>
      <div className='flex flex-col gap-9'>
       <Header page='Gerenciar acesso' name='Teste' />
-      <div className='w-full flex justify-between'>
+      <div className='w-full flex justify-between items-center'>
        <SearchBar />
+       <SwitchUsers adm={adm} setAdm={setAdm} op={op} setOp={setOp} />
        <Button
         name='Novo usuário'
         width='w-[190px]'

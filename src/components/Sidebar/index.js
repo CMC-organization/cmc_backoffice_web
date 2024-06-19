@@ -76,7 +76,7 @@ const Sidebar = () => {
      )}
     >
      <Access color='currentColor' />
-     <span className='ms-3'>Acesso</span>
+     <span className='ms-3'>Gerenciar acessos</span>
     </Link>
    </div>
 
