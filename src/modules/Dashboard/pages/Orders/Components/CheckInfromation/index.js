@@ -1,26 +1,75 @@
+import { useForm } from 'react-hook-form';
+
+import Close from '../../../../../../images/svg/XButton';
+import Input from '../../../../../../components/Input';
+import InputXL from '../../../../../../components/InputXL';
+import Button from '../../../../../../components/Button';
+
 const CheckInfromation = () => {
+ const {
+  handleSubmit,
+  control,
+  formState: { errors },
+ } = useForm({
+  defaultValues: {
+   name: '',
+   email: '',
+   password: '',
+   permissions: '',
+  },
+ });
+
+ const postForm = (data) => {};
+
  return (
-  <div className='flex items-center gap-5'>
-   <div className='flex flex-col items-center gap-1'>
-    <p className='whitespace-nowrap text-sm font-medium text-black'>34434343 0000000000 808080808080</p>
-    <p className='whitespace-nowrap text-xs font-medium text-font'>N° do cheque</p>
+  <form onSubmit={handleSubmit(postForm)} className='w-80 border border-gray-200 rounded-3xl p-3'>
+   <div className='flex items-center justify-between'>
+    <div className='relative pt-4 pb-4'>
+     <img
+      className='w-24 h-14 object-cover rounded-md'
+      src='https://www.mediamarketing.com.br/cdn/shop/products/Checao.jpg?v=1712952614&width=1445'
+     />
+     <div class='absolute -top-0 -right-4 cursor-pointer'>
+      <Close />
+     </div>
+    </div>
+    <div className='flex flex-col items-center gap-1'>
+     <p className='whitespace-nowrap text-xs font-medium text-font'>Status do cheque</p>
+     <p className='whitespace-nowrap text-[10px] font-medium text-green1'>Repassado com sucesso</p>
+    </div>
    </div>
-   <div className='flex flex-col items-center gap-1'>
-    <img className='w-14 h-9 object-cover rounded-md' src='https://www.mediamarketing.com.br/cdn/shop/products/Checao.jpg?v=1712952614&width=1445' />
-    <p className='whitespace-nowrap text-xs font-medium text-font'>Foto do cheque</p>
-   </div>
-   <div className='flex flex-col items-center gap-1'>
-    <p className='whitespace-nowrap text-[10px] font-medium text-green1'>Repassado com sucesso</p>
-    <p className='whitespace-nowrap text-xs font-medium text-font'>Status do cheque</p>
-   </div>
-   <div className='flex flex-col items-center gap-1'>
-    <p className='whitespace-nowrap text-[10px] font-medium text-font2'>Gopn Artificial Intellige...</p>
-    <p className='whitespace-nowrap text-xs font-medium text-font'>Empresa repasada</p>
-   </div>
-   <div className='min-w-80 max-w-80 min-h-10 border border-gray-200 rounded-md p-2 '>
-    <p className=' text-xs font-medium text-black'>Cheque repassado para compra de novas atualizações no sistema.</p>
-   </div>
-  </div>
+   <Input
+    label='N° do cheque'
+    name='number'
+    control={control}
+    placeholder='Insira o N° do cheque'
+    rules={{
+     required: 'Campo obrigatório!',
+    }}
+    error={errors.number}
+   />
+   <Input
+    label='Valor do cheque'
+    name='value'
+    control={control}
+    placeholder='Insira o valor do cheque'
+    rules={{
+     required: 'Campo obrigatório!',
+    }}
+    error={errors.value}
+   />
+   <InputXL
+    label='Observações'
+    name='comments'
+    control={control}
+    placeholder='Observações'
+    rules={{
+     required: 'Campo obrigatório!',
+    }}
+    error={errors.comments}
+   />
+   <Button name='Excluir' width={'w-full'} height={'h-10'} textColor={'text-primar'} backgroundColor={'bg-red4'} onClick={() => {}} />
+  </form>
  );
 };
 export default CheckInfromation;

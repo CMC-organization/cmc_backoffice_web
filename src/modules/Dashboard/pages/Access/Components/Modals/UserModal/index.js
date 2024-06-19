@@ -1,6 +1,4 @@
 import { useForm } from 'react-hook-form';
-import { MultiSelect } from 'primereact/multiselect';
-import { Controller } from 'react-hook-form';
 
 import XClose from '../../../../../../../images/svg/XClose';
 import UserIcon from '../../../../../../../images/svg/UserIcon';
@@ -20,12 +18,12 @@ const UserModal = () => {
   control,
   formState: { errors },
  } = useForm({
-    defaultValues: {
-        name: '',
-        email: '',
-        password: '',
-        permissions: '',
-    },
+  defaultValues: {
+   name: '',
+   email: '',
+   password: '',
+   permissions: '',
+  },
  });
 
  const onSubmit = (data) => {

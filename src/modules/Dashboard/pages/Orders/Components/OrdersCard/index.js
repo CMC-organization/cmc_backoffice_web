@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 import ArrowUp from '../../../../../../images/svg/ArrowUp';
 import ArrowDown from '../../../../../../images/svg/ArrowDown';
 import Invoice from '../../../../../../images/svg/Invoice';
-import Cipher from '../../../../../../images/svg/Cipher';
 import Upload from '../../../../../../images/svg/Upload';
 
 import ItemCard from '../ItemCard';
 import CheckInfromation from '../CheckInfromation';
 import UploadCard from '../UploadCard';
+import Button from '../../../../../../components/Button';
 
 const OrdersCard = ({ setListItens }) => {
  const [open, setOpen] = useState(false);
@@ -65,6 +65,10 @@ const OrdersCard = ({ setListItens }) => {
      <p className=' whitespace-nowrap text-xs font-medium text-font'>Endereço de entrega</p>
     </div>
     <div className='flex flex-col items-center gap-1'>
+     <p className=' whitespace-nowrap text-xs font-medium text-primar'>Região 1</p>
+     <p className=' whitespace-nowrap text-xs font-medium text-font'>Região de entrega</p>
+    </div>
+    <div className='flex flex-col items-center gap-1'>
      <p className=' whitespace-nowrap text-sm font-medium text-black'>09/12/2023</p>
      <p className=' whitespace-nowrap text-xs font-medium text-font'>Previsão de entrega</p>
     </div>
@@ -97,8 +101,15 @@ const OrdersCard = ({ setListItens }) => {
      <p className='whitespace-nowrap text-xs font-medium text-font'>Nota fiscal</p>
     </div>
     <div className='flex flex-col items-center gap-1'>
-     <Cipher />
-     <p className='whitespace-nowrap text-xs font-medium text-font'>Gerar cobrança</p>
+     <Button
+      name='Cancelar pedido'
+      width={'w-48'}
+      height={'h-10'}
+      textColor={'text-white'}
+      backgroundColor={'bg-primar'}
+      border={'border-border border-1 '}
+      onClick={() => {}}
+     />
     </div>
    </div>
    {open && (
@@ -118,9 +129,8 @@ const OrdersCard = ({ setListItens }) => {
       <div className='w-full min-h-[0.5px] bg-border mt-6 mb-6' />
       <div className='flex flex-col gap-3'>
        <p className='text-base font-medium text-black'>Informações sobre o cheque</p>
-       <div className='flex items-center'>
+       <div className='flex items-center gap-10'>
         <CheckInfromation />
-        <div className='min-w-[0.5px] min-h-20 bg-border mx-5' />
         <CheckInfromation />
        </div>
       </div>
