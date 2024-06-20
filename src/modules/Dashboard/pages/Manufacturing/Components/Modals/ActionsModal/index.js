@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import XClose from '../../../../../../../images/svg/XClose';
 
-import { useManufacturing } from '../../../../../../../context/Manufacturing';
+import { useManufacturing } from '../../../../../../../context/ManufacturingContext';
 
 const ActionsModal = () => {
  const navigate = useNavigate();

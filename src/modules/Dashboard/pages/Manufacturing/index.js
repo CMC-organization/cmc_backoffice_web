@@ -10,7 +10,7 @@ import Process from './Components/Process';
 import Goals from './Components/Goals';
 import CardManufacturing from './Components/CardManufacturing';
 import ActionsModal from './Components/Modals/ActionsModal';
-import { useManufacturing } from '../../../../context/Manufacturing';
+import { useManufacturing } from '../../../../context/ManufacturingContext';
 import DeleteManufacturingModal from './Components/Modals/DeleteManufacturingModal';
 
 const Manufacturing = () => {

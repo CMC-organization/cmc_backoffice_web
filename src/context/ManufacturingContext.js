@@ -4,6 +4,7 @@ export const ManufacturingContext = createContext({});
 export const ManufacturingProvider = ({ children }) => {
  const [openActions, setOpenActions] = useState(false);
  const [openDelete, setOpenDelete] = useState(false);
+ const [openFilter, setOpenFilter] = useState(false);
 
  return (
   <ManufacturingContext.Provider
@@ -12,6 +13,8 @@ export const ManufacturingProvider = ({ children }) => {
     setOpenActions,
     openDelete,
     setOpenDelete,
+    openFilter,
+    setOpenFilter,
    }}
   >
    {children}

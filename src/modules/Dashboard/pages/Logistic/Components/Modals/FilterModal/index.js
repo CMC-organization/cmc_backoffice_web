@@ -2,21 +2,17 @@ import { useForm } from 'react-hook-form';
 
 import Filter from '../../../../../../../images/svg/Filter';
 
-import { useManufacturing } from '../../../../../../../context/ManufacturingContext';
+import { useLogistc } from '../../../../../../../context/LogistcContext';
 import Button from '../../../../../../../components/Button';
-import InputSelect from '../../../../../../../components/InputSelect';
 import InputCalendar from '../../../../../../../components/InputCalendar';
 
 const FilterModal = () => {
- const { openFilter, setOpenFilter } = useManufacturing();
+ const { openFilter, setOpenFilter } = useLogistc();
 
- const { handleSubmit, control, reset } = useForm({
+ const { handleSubmit, control } = useForm({
   defaultValues: {
-   region: '',
-   sector: '',
-   status: '',
-   price: '',
-   stock: '',
+   dateStart: '',
+   dateEnd: '',
   },
  });
 
@@ -24,8 +20,10 @@ const FilterModal = () => {
   console.log(data);
  };
 
- const regions = [{ name: 'Porta', code: 'Porta' }];
- const sector = [{ name: 'ABC', code: 'ABC' }];
+ const clients = [
+  { name: 'Joao', code: 'Joao' },
+  { name: 'Gustavo', code: 'Gustavo' },
+ ];
  const status = [
   { name: 'Ok', code: 'OK' },
   { name: 'Error', code: 'Err' },
@@ -49,7 +47,7 @@ const FilterModal = () => {
        setOpenFilter(false);
       }}
      />
-     <div className='w-96 h-2/3 bg-offWhite shadow-slate-700 drop-shadow-md p-6 rounded absolute top-44 z-20 overflow-y-auto'>
+     <div className='w-96  bg-offWhite shadow-slate-700 drop-shadow-md p-6 rounded absolute top-44 z-20 overflow-y-auto'>
       <div className='flex items-center justify-between'>
        <p className='text-lg text-black font-medium'>Filtros</p>
        <Button
@@ -60,22 +58,14 @@ const FilterModal = () => {
         backgroundColor='bg-offWhite'
         fontSize={'text-sm'}
         type='submit'
-        onClick={reset}
        />
       </div>
       <div className='min-w-full min-h-[0.5px] my-3 bg-border' />
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
-       <InputSelect label='Região' name='region' control={control} placeholder='Selecione' options={regions} optionLabel={'name'} />
-
-       <InputSelect label='Setor' name='sector' control={control} placeholder='Selecione' options={sector} optionLabel={'name'} />
-
        <InputCalendar label='Data inicio' name='dateStart' control={control} placeholder='DD/MM/AAAA' />
-
        <InputCalendar label='Data fim' name='dateEnd' control={control} placeholder='DD/MM/AAAA' />
 
-       <div className='flex justify-between pt-4'>
-        <Button name='Salvar filtros' width='w-100' height={'h-12'} textColor={'text-white'} backgroundColor='bg-primar' type='submit' />
-       </div>
+       <Button name='Salvar filtros' width='w-100' height={'h-12'} textColor={'text-white'} backgroundColor='bg-primar' type='submit' />
       </form>
      </div>
     </>

@@ -69,8 +69,8 @@ const Sidebar = () => {
      <Manufacturing color='currentColor' />
      <span className='ms-3'>Fabricação</span>
     </Link>
-
-    <div
+    <Link
+     to='/logistics'
      className={cn(
       'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
       location.pathname.includes('logistics') && 'text-primar bg-red4',
@@ -87,7 +87,7 @@ const Sidebar = () => {
        )}
       ></div>
      </div>
-    </div>
+    </Link>
 
     <Link
      to='/purchases'

@@ -9,7 +9,7 @@ import TreePoints from '../../../../../../images/svg/TreePoints';
 import Manufacturing from '../../../../../../images/svg/Manufacturing';
 
 import Button from '../../../../../../components/Button';
-import { useManufacturing } from '../../../../../../context/Manufacturing';
+import { useManufacturing } from '../../../../../../context/ManufacturingContext';
 
 const CardManufacturing = () => {
  const { setOpenActions } = useManufacturing();

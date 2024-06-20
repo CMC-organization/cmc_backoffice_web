@@ -11,7 +11,8 @@ import { OrdersProvider } from './context/OrdersContext';
 import { ProductsProvider } from './context/ProductsContext';
 import { AccessProvider } from './context/AccessContext';
 import { ClientsProvider } from './context/ClientsContext';
-import { ManufacturingProvider } from './context/Manufacturing';
+import { ManufacturingProvider } from './context/ManufacturingContext';
+import { LogistcProvider } from './context/LogistcContext';
 import { PurchaseProvider } from './context/PurchasesContext';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -28,10 +29,12 @@ root.render(
       <AccessProvider>
        <ClientsProvider>
         <ManufacturingProvider>
-         <PrimeReactProvider>
-          <ToastContainer />
-          <AppStack />
-         </PrimeReactProvider>
+         <LogistcProvider>
+          <PrimeReactProvider>
+           <ToastContainer />
+           <AppStack />
+          </PrimeReactProvider>
+         </LogistcProvider>
         </ManufacturingProvider>
        </ClientsProvider>
       </AccessProvider>

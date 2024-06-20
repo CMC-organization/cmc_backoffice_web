@@ -14,6 +14,7 @@ import Clients from '../modules/Dashboard/pages/Clients';
 import Manufacturing from '../modules/Dashboard/pages/Manufacturing';
 import CreateManufacturing from '../modules/Dashboard/pages/Manufacturing/CreateManufacturing';
 import EditManufacturing from '../modules/Dashboard/pages/Manufacturing/EditManufacturing';
+import Logistic from '../modules/Dashboard/pages/Logistic';
 import Purchases from '../modules/Dashboard/pages/Purchases';
 
 /* DASHBOARD */
@@ -48,7 +49,7 @@ const AppStack = () => {
     <Route path='/manufacturing/create' element={<CreateManufacturing />} />
     <Route path='/manufacturing/edit' element={<EditManufacturing />} />
 
-    {/* <Route path='/logistics' element={<Logistics />} /> */}
+    <Route path='/logistics' element={<Logistic />} />
     <Route path='/purchases' element={<Purchases />} />
     <Route path='*' element={<Navigate to='/login' />} />
    </Routes>

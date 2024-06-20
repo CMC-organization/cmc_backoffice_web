@@ -1,5 +1,5 @@
 import Button from '../../../../../../../components/Button';
-import { useManufacturing } from '../../../../../../../context/Manufacturing';
+import { useManufacturing } from '../../../../../../../context/ManufacturingContext';
 import XClose from '../../../../../../../images/svg/XClose';
 
 const DeleteManufacturingModal = () => {
