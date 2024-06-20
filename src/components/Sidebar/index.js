@@ -3,6 +3,8 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Access from '../../images/svg/Access';
 import Cart from '../../images/svg/Cart';
 import Clients from '../../images/svg/Clients';
+import Manufacturing from '../../images/svg/Manufacturing';
+import Logistics from '../../images/svg/Logistics';
 import Exit from '../../images/svg/Exit';
 import Logo from '../../images/svg/Logo';
 import Products from '../../images/svg/Products';
@@ -56,6 +58,36 @@ const Sidebar = () => {
      <Clients color='currentColor' />
      <span className='ms-3'>Clientes</span>
     </Link>
+
+    <Link
+     to='/manufacturing'
+     className={cn(
+      'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+      location.pathname.includes('manufacturing') && 'text-primar bg-red4',
+     )}
+    >
+     <Manufacturing color='currentColor' />
+     <span className='ms-3'>Fabricação</span>
+    </Link>
+
+    <div
+     className={cn(
+      'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+      location.pathname.includes('logistics') && 'text-primar bg-red4',
+     )}
+    >
+     <Logistics color='currentColor' />
+     <span className='ms-3'>Logistica</span>
+     <div>
+      <div
+       to='/logistics'
+       className={cn(
+        'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+        location.pathname.includes('logistics') && 'text-primar bg-red4',
+       )}
+      ></div>
+     </div>
+    </div>
 
     <Link
      to='/purchases'

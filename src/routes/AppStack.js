@@ -11,6 +11,9 @@ import CreateProducts from '../modules/Dashboard/pages/Products/CreateProduct';
 import EditProduct from '../modules/Dashboard/pages/Products/EditProduct';
 import Access from '../modules/Dashboard/pages/Access';
 import Clients from '../modules/Dashboard/pages/Clients';
+import Manufacturing from '../modules/Dashboard/pages/Manufacturing';
+import CreateManufacturing from '../modules/Dashboard/pages/Manufacturing/CreateManufacturing';
+import EditManufacturing from '../modules/Dashboard/pages/Manufacturing/EditManufacturing';
 import Purchases from '../modules/Dashboard/pages/Purchases';
 
 /* DASHBOARD */
@@ -41,6 +44,11 @@ const AppStack = () => {
     <Route path='/products/edit' element={<EditProduct />} />
     <Route path='/access' element={<Access />} />
     <Route path='/clients' element={<Clients />} />
+    <Route path='/manufacturing' element={<Manufacturing />} />
+    <Route path='/manufacturing/create' element={<CreateManufacturing />} />
+    <Route path='/manufacturing/edit' element={<EditManufacturing />} />
+
+    {/* <Route path='/logistics' element={<Logistics />} /> */}
     <Route path='/purchases' element={<Purchases />} />
     <Route path='*' element={<Navigate to='/login' />} />
    </Routes>

@@ -16,7 +16,7 @@ const ItemCard = () => {
      <p className='text-xs font-medium text-font'>Portas</p>
     </div>
     <div className='flex'>
-     <div className='flex flex-col gap-1'>
+     <div className='min-w-28 flex flex-col gap-1'>
       <p className='text-xs font-medium text-black'>Lado de abertura</p>
       <div className='w-max px-3 py-1 rounded-3xl flex items-center justify-center gap-1 bg-primar'>
        <Door />
@@ -24,7 +24,7 @@ const ItemCard = () => {
       </div>
      </div>
      <div className='w-[0.5px] h-100 bg-border mr-2 ml-2' />
-     <div className='flex flex-col gap-1'>
+     <div className='min-w-28 flex flex-col gap-1'>
       <p className='text-xs font-medium text-black'>Tamanho</p>
       <div className='w-max px-3 py-1 rounded-3xl flex items-center justify-center gap-1 bg-primar'>
        <Rule />
@@ -32,7 +32,7 @@ const ItemCard = () => {
       </div>
      </div>
      <div className='w-[0.5px] h-100 bg-border mr-2 ml-2' />
-     <div className='flex flex-col gap-1'>
+     <div className='min-w-28 flex flex-col gap-1'>
       <p className='text-xs font-medium text-black'>QTD Pedido</p>
       <div className='w-max px-3 py-1 rounded-3xl flex items-center justify-center gap-1 bg-primar'>
        <List />
@@ -40,7 +40,7 @@ const ItemCard = () => {
       </div>
      </div>
      <div className='w-[0.5px] h-100 bg-border mr-2 ml-2' />
-     <div className='flex flex-col gap-1'>
+     <div className='min-w-28 flex flex-col gap-1'>
       <p className='text-xs font-medium text-black'>QTD Pronta entrega</p>
       <div className='w-max px-3 py-1 rounded-3xl flex items-center justify-center gap-1 bg-green-200'>
        <CheckGreen />
@@ -48,7 +48,7 @@ const ItemCard = () => {
       </div>
      </div>
      <div className='w-[0.5px] h-100 bg-border mr-2 ml-2' />
-     <div className='flex flex-col gap-1'>
+     <div className='min-w-28 flex flex-col gap-1'>
       <p className='text-xs font-medium text-black'>QTD Para fabricar</p>
       <div className='w-max px-3 py-1 rounded-3xl flex items-center justify-center gap-1 bg-lime-100'>
        <Factory />
