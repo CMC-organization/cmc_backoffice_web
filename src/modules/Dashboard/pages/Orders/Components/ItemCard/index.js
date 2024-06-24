@@ -39,7 +39,7 @@ const ItemCard = () => {
        <p className='text-xs font-medium text-offWhite'>10</p>
       </div>
      </div>
-     <div className='w-[0.5px] h-100 bg-border mr-2 ml-2' />
+     {/* <div className='w-[0.5px] h-100 bg-border mr-2 ml-2' />
      <div className='min-w-28 flex flex-col gap-1'>
       <p className='text-xs font-medium text-black'>QTD Pronta entrega</p>
       <div className='w-max px-3 py-1 rounded-3xl flex items-center justify-center gap-1 bg-green-200'>
@@ -54,7 +54,7 @@ const ItemCard = () => {
        <Factory />
        <p className='text-xs font-medium text-lime-600'>5</p>
       </div>
-     </div>
+     </div> */}
     </div>
     <div>
      <p className='text-lg font-medium text-black'>R$ 10.000,00</p>

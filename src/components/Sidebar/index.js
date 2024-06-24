@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 import Access from '../../images/svg/Access';
@@ -9,11 +10,17 @@ import Exit from '../../images/svg/Exit';
 import Logo from '../../images/svg/Logo';
 import Products from '../../images/svg/Products';
 import Purchase from '../../images/svg/Purchase';
+import ArrowDown from '../../images/svg/ArrowDownSidebar';
+import ArrowUp from '../../images/svg/ArrowUpSidebar';
+import RedPoint from '../../images/svg/RedPoint';
+
 import { cn } from '../../Utils/cn';
 
 const Sidebar = () => {
  const location = useLocation();
  const navigate = useNavigate();
+
+ const [logistics, setLogistics] = useState(true);
 
  const logout = () => {
   navigate('/');
@@ -69,27 +76,69 @@ const Sidebar = () => {
      <Manufacturing color='currentColor' />
      <span className='ms-3'>Fabricação</span>
     </Link>
-    <Link
-     to='/logistics'
-     className={cn(
-      'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
-      location.pathname.includes('logistics') && 'text-primar bg-red4',
-     )}
-    >
-     <Logistics color='currentColor' />
-     <span className='ms-3'>Logistica</span>
-     <div>
-      <div
-       to='/logistics'
-       className={cn(
-        'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
-        location.pathname.includes('logistics') && 'text-primar bg-red4',
-       )}
-      ></div>
-     </div>
-    </Link>
 
-    <Link
+    <div>
+     <div
+      onClick={() => {
+       setLogistics(!logistics);
+      }}
+      className={cn(
+       'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar cursor-pointer',
+       location.pathname.includes('logistics') && 'text-primar bg-red4',
+       location.pathname.includes('receipt') && 'text-primar bg-red4',
+       location.pathname.includes('delivery') && 'text-primar bg-red4',
+      )}
+     >
+      <Logistics color='currentColor' />
+      <div className='w-full flex justify-between items-center'>
+       <span className='ms-3'>Logistica</span>
+       {logistics ? <ArrowUp color='currentColor' /> : <ArrowDown color='currentColor' />}
+      </div>
+     </div>
+
+     {logistics && (
+      <div className='pl-2'>
+       <Link
+        to='/separation'
+        className={cn(
+         'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+         location.pathname.includes('separation') && 'text-primar bg-red4',
+        )}
+       >
+        <RedPoint color='currentColor' />
+        <span className='ms-3'>Separação</span>
+       </Link>
+       <Link
+        to='/receipt'
+        className={cn(
+         'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+         location.pathname.includes('receipt') && 'text-primar bg-red4',
+        )}
+       >
+        <RedPoint color='currentColor' />
+        <div className='flex items-center gap-2'>
+         <span className='ms-3'>Recebimento</span>
+         <span className='text-[9px]'>(Em breve)</span>
+        </div>
+       </Link>
+       <Link
+        to='/delivery'
+        className={cn(
+         'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
+         location.pathname.includes('delivery') && 'text-primar bg-red4',
+        )}
+       >
+        <RedPoint color='currentColor' />
+        <div className='flex items-center gap-2'>
+         <span className='ms-3'>Entregas</span>
+         <span className='text-[9px]'>(Em breve)</span>
+        </div>
+       </Link>
+      </div>
+     )}
+    </div>
+
+    {/* <Link
      to='/purchases'
      className={cn(
       'flex items-center p-2 rounded-lg text-font2 hover:bg-red4 hover:text-primar',
@@ -98,7 +147,7 @@ const Sidebar = () => {
     >
      <Purchase color='currentColor' />
      <span className='ms-3'>Compras & Estoque</span>
-    </Link>
+    </Link> */}
 
     <Link
      to='/access'
